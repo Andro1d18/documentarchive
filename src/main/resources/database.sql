@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS documents;
 
 
 
@@ -30,6 +31,14 @@ CREATE TABLE user_roles (
   UNIQUE (user_id, role_id)
 );
 
+CREATE TABLE documents
+(
+    id  INT         NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+    name VARCHAR(255) NOT NULL ,
+    description VARCHAR(255) NOT NULL ,
+    author INT NOT NULL,
+    FOREIGN KEY (author) REFERENCES users (id)
+);
 
 -- Insert data
 
@@ -39,3 +48,10 @@ INSERT INTO roles VALUES (1, 'ROLE_USER');
 INSERT INTO roles VALUES (2, 'ROLE_ADMIN');
 
 INSERT INTO user_roles VALUES (1, 2);
+
+INSERT INTO documents (name, description, author)
+VALUES ('файл.doc', 'пример устаревшего MS word', 1),
+     ('рецепты.pdf', 'рецепты в pdf', 1),
+     ('список.txt', 'Список покупок', 1);
+
+
