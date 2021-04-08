@@ -19,7 +19,6 @@ public class Document {
     @Column(name = "author")
     private Integer authorId;
 
-    private String authorName;
 
     public Document() {
 
@@ -57,11 +56,4 @@ public class Document {
         this.authorId = authorId;
     }
 
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
 }

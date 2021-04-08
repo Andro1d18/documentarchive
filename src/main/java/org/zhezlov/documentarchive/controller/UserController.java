@@ -1,6 +1,7 @@
 package org.zhezlov.documentarchive.controller;
 
 import org.zhezlov.documentarchive.model.User;
+import org.zhezlov.documentarchive.service.DocumentService;
 import org.zhezlov.documentarchive.service.SecurityService;
 import org.zhezlov.documentarchive.service.UserService;
 import org.zhezlov.documentarchive.validator.UserValidator;
@@ -29,6 +30,9 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+
+    @Autowired
+    private DocumentService documentService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -67,6 +71,8 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
+
+        model.addAttribute("documents", documentService.getAll());
         return "welcome";
     }
 

@@ -4090,3 +4090,1900 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-04-08 15:47:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "DOCUMENT0_.AUTHORNAME" не найден
+Column "DOCUMENT0_.AUTHORNAME" not found; SQL statement:
+select document0_.id as id1_0_, document0_.author as author2_0_, document0_.authorName as authorNa3_0_, document0_.description as descript4_0_, document0_.name as name5_0_ from documents document0_ [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.Alias.optimize(Alias.java:52)
+	at org.h2.command.dml.Select.prepare(Select.java:1206)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at org.apache.commons.dbcp.DelegatingConnection.prepareStatement(DelegatingConnection.java:281)
+	at org.apache.commons.dbcp.PoolingDataSource$PoolGuardConnectionWrapper.prepareStatement(PoolingDataSource.java:313)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:162)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:186)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:160)
+	at org.hibernate.loader.Loader.prepareQueryStatement(Loader.java:1885)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:1862)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:1839)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:910)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:355)
+	at org.hibernate.loader.Loader.doList(Loader.java:2554)
+	at org.hibernate.loader.Loader.doList(Loader.java:2540)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2370)
+	at org.hibernate.loader.Loader.list(Loader.java:2365)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:497)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:387)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:236)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1300)
+	at org.hibernate.internal.QueryImpl.list(QueryImpl.java:103)
+	at org.hibernate.jpa.internal.QueryImpl.list(QueryImpl.java:573)
+	at org.hibernate.jpa.internal.QueryImpl.getResultList(QueryImpl.java:449)
+	at org.hibernate.jpa.criteria.compile.CriteriaQueryTypeQueryAdapter.getResultList(CriteriaQueryTypeQueryAdapter.java:67)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:315)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.executeMethodOn(RepositoryFactorySupport.java:434)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:419)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:391)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:136)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodIntercceptor.invoke(CrudMethodMetadataPostProcessor.java:122)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at com.sun.proxy.$Proxy40.findAll(Unknown Source)
+	at org.zhezlov.documentarchive.service.DocumentServiceImpl.getAll(DocumentServiceImpl.java:17)
+	at org.zhezlov.documentarchive.controller.UserController.welcome(UserController.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:111)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:806)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:729)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:316)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:114)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:122)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:169)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:48)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:205)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:64)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:53)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:213)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:176)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-04-08 13:01:28 jdbc[8]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-04-08 13:03:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Невозможно удалить "USERS", пока существует зависимый объект "CONSTRAINT_DE"
+Cannot drop "USERS" because "CONSTRAINT_DE" depends on it; SQL statement:
+DROP TABLE IF EXISTS users [90107-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:124)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.intellij.database.remote.jdbc.impl.RemoteStatementImpl.execute(RemoteStatementImpl.java:78)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-04-08 13:03:35 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Процесс не может получить доступ к файлу, так как часть этого файла заблокирована другим процессом"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Процесс не может получить доступ к файлу, так как часть этого файла заблокирована другим процессом"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Процесс не может получить доступ к файлу, так как часть этого файла заблокирована другим процессом"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Процесс не может получить доступ к файлу, так как часть этого файла заблокирована другим процессом"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Процесс не может получить доступ к файлу, так как часть этого файла заблокирована другим процессом
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:35 jdbc[9]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-04-08 13:03:35 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:36 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:37 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:37 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:38 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:38 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:39 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:39 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:40 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:40 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:41 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:42 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:42 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:43 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:43 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:44 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:44 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:45 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:45 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:46 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:46 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:47 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:48 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:48 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"; SQL statement:
+CREATE TABLE roles (
+  id   INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+) [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.write(PageOutputStream.java:131)
+	at org.h2.pagestore.PageLog.write(PageLog.java:552)
+	at org.h2.pagestore.PageLog.logAddOrRemoveRow(PageLog.java:657)
+	at org.h2.pagestore.PageStore.logAddOrRemoveRow(PageStore.java:1458)
+	at org.h2.pagestore.db.PageDataIndex.addTry(PageDataIndex.java:172)
+	at org.h2.pagestore.db.PageDataIndex.add(PageDataIndex.java:118)
+	at org.h2.pagestore.db.PageStoreTable.addRow(PageStoreTable.java:89)
+	at org.h2.engine.Database.addMeta(Database.java:949)
+	at org.h2.engine.Database.addSchemaObject(Database.java:1136)
+	at org.h2.table.Column.convertAutoIncrementToSequence(Column.java:460)
+	at org.h2.command.ddl.CommandWithColumns.generateSequences(CommandWithColumns.java:103)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:112)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.intellij.database.remote.jdbc.impl.RemoteStatementImpl.execute(RemoteStatementImpl.java:78)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 37 more
+2021-04-08 13:03:49 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:49 jdbc[10]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-04-08 13:03:49 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:50 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:50 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:51 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:51 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:52 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:52 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:53 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:54 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:54 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:55 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:55 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:56 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:56 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:57 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:57 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:58 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:59 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:03:59 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:04:00 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:04:00 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:04:01 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:04:01 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:04:02 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:04:02 database: flush
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.flush(PageOutputStream.java:156)
+	at org.h2.pagestore.PageLog.flushOut(PageLog.java:877)
+	at org.h2.pagestore.PageLog.flush(PageLog.java:684)
+	at org.h2.pagestore.PageStore.flushLog(PageStore.java:1016)
+	at org.h2.engine.Database.flush(Database.java:2252)
+	at org.h2.pagestore.WriterThread.run(WriterThread.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 10 more
+2021-04-08 13:04:03 database: close
+org.h2.message.DbException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.write(PageOutputStream.java:131)
+	at org.h2.pagestore.PageLog.write(PageLog.java:552)
+	at org.h2.pagestore.PageLog.checkpoint(PageLog.java:694)
+	at org.h2.pagestore.PageStore.checkpoint(PageStore.java:431)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1514)
+	at org.h2.engine.Database.closeImpl(Database.java:1454)
+	at org.h2.engine.Database.close(Database.java:1373)
+	at org.h2.engine.Database.removeSession(Database.java:1307)
+	at org.h2.engine.Session.close(Session.java:963)
+	at org.h2.jdbc.JdbcConnection.close(JdbcConnection.java:453)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.close(RemoteConnectionImpl.java:96)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 34 more
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 31 more
+2021-04-08 13:04:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Ошибка ввода/вывода: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db"
+IO Exception: "java.io.IOException: Stream Closed"; "C:/DEVELOPER/Projects/documentarchive/db/db.h2.db" [90031-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertIOException(DbException.java:394)
+	at org.h2.store.FileStore.write(FileStore.java:338)
+	at org.h2.pagestore.PageStore.writePage(PageStore.java:1363)
+	at org.h2.pagestore.PageStreamData.write(PageStreamData.java:107)
+	at org.h2.pagestore.PageOutputStream.storePage(PageOutputStream.java:148)
+	at org.h2.pagestore.PageOutputStream.write(PageOutputStream.java:131)
+	at org.h2.pagestore.PageLog.write(PageLog.java:552)
+	at org.h2.pagestore.PageLog.commit(PageLog.java:572)
+	at org.h2.pagestore.PageStore.commit(PageStore.java:1471)
+	at org.h2.engine.Database.commit(Database.java:2207)
+	at org.h2.engine.Session.rollback(Session.java:846)
+	at org.h2.engine.Session.close(Session.java:950)
+	at org.h2.jdbc.JdbcConnection.close(JdbcConnection.java:453)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.close(RemoteConnectionImpl.java:96)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.io.IOException: Stream Closed
+	at java.base/java.io.RandomAccessFile.writeBytes(Native Method)
+	at java.base/java.io.RandomAccessFile.write(RandomAccessFile.java:559)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:492)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:375)
+	at org.h2.store.FileStore.write(FileStore.java:335)
+	... 29 more
+2021-04-08 13:04:35 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-04-08 13:04:38 jdbc[4]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-04-08 13:04:41 jdbc[5]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-04-08 13:04:45 jdbc[6]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
