@@ -4,7 +4,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,8 +31,31 @@
     </c:if>
 
 </div>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead >
+        <tr>
+            <th>name</th>
+            <th>description</th>
+            <th>author</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <c:forEach items="${documents}" var="document">
+            <jsp:useBean id="document" scope="page" type="org.zhezlov.documentarchive.model.Document"/>
+            <tr>
+                <td>${document.name} </td>
+                <td>${document.description}</td>
+                <td>${document.authorId}</td>
+                <td><a href="documents/update?id=${document.id}">update</a></td>
+                <td><a href="documents/delete?id=${document.id}">delete</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-<jsp:include page="docs.jsp"/>
+<%--<jsp:include page="docs.jsp"/>--%>
 </body>
 </html>

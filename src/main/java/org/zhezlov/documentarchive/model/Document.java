@@ -8,7 +8,7 @@ public class Document {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -17,18 +17,18 @@ public class Document {
     private String description;
 
     @Column(name = "author")
-    private Integer authorId;
+    private Long authorId;
 
 
     public Document() {
 
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,11 +48,11 @@ public class Document {
         this.description = description;
     }
 
-    public Integer getAuthorId() {
+    public Long getAuthorId() {
         return authorId;
     }
 
-    public void setAuthorId(Integer authorId) {
+    public void setAuthorId(Long authorId) {
         this.authorId = authorId;
     }
 
