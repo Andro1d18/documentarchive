@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Controller for {@link User}'s pages.
- *
- * @version 1.0
- */
 
 @Controller
 public class UserController {
@@ -49,7 +44,7 @@ public class UserController {
             return "registration";
         }
 
-        userService.save(userForm);
+        userService.save(userForm); //toDo обработать ситуацию, когда первый сработает, а securityService не сработает (проверить сохранилось ли и затем залогинить)
 
         securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
 

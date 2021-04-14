@@ -1,6 +1,10 @@
 package org.zhezlov.documentarchive.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "documents")
@@ -11,14 +15,27 @@ public class Document {
     private Long id;
 
     @Column(name = "name")
+    @NotBlank
     private String name;
 
     @Column(name = "description")
+    @NotBlank
     private String description;
 
     @Column(name = "author")
     private Long authorId;
 
+    @Column(name = "created")
+    @NotNull
+    private Timestamp dateTimeCreated;
+
+    public Timestamp getDateTimeCreated() {
+        return dateTimeCreated;
+    }
+
+    public void setDateTimeCreated(Timestamp dateTimeCreated) {
+        this.dateTimeCreated = dateTimeCreated;
+    }
 
     public Document() {
 

@@ -41,6 +41,7 @@ CREATE TABLE documents
     name        VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     author      INT          NOT NULL,
+    created     TIMESTAMP    DEFAULT now() NOT NULL,
     FOREIGN KEY (author) REFERENCES users (id)
 );
 
@@ -61,12 +62,12 @@ VALUES (1, 2);
 INSERT INTO user_roles
 VALUES (2, 1);
 
-INSERT INTO documents (name, description, author)
-VALUES ('файл.doc', 'пример устаревшего MS word', 1),
-       ('рецепты.pdf', 'рецепты в pdf', 1),
-       ('список.txt', 'Список покупок', 1),
-       ('films.txt', 'Мои любимые фильмы', 2),
-       ('List.xls', 'Штатное рассписание', 2);
+INSERT INTO documents (name, description, author, created)
+VALUES ('файл.doc', 'пример устаревшего MS word', 1, '2020-11-01 14:30:00'),
+       ('рецепты.pdf', 'рецепты в pdf', 1, '2021-02-01 8:30:00'),
+       ('список.txt', 'Список покупок', 1, '2019-11-01 22:30:00'),
+       ('films.txt', 'Мои любимые фильмы', 2, '2002-11-01 14:30:00'),
+       ('List.xls', 'Штатное рассписание', 2, '2017-09-01 10:30:00');
 
 
 

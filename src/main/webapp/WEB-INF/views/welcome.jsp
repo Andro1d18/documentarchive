@@ -15,6 +15,8 @@
     <title>Welcome</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -27,10 +29,14 @@
 
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
         </h2>
-
+<%-- toDo переделать pageContext на c:out (везде где выводится текст) во всех jsp--%>
     </c:if>
 
 </div>
+<div>
+    <a href="document/create">Add document</a>
+</div>
+
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover">
         <thead >
@@ -38,24 +44,26 @@
             <th>name</th>
             <th>description</th>
             <th>author</th>
+            <th>cteated</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
         <c:forEach items="${documents}" var="document">
-            <jsp:useBean id="document" scope="page" type="org.zhezlov.documentarchive.model.Document"/>
+<%--            <jsp:useBean id="document" scope="page" type="org.zhezlov.documentarchive.model.Document"/>--%>
             <tr>
                 <td>${document.name} </td>
                 <td>${document.description}</td>
                 <td>${document.authorId}</td>
+                <td>${document.dateTimeCreated}</td>
                 <td><a href="documents/update?id=${document.id}">update</a></td>
                 <td><a href="documents/delete?id=${document.id}">delete</a></td>
             </tr>
         </c:forEach>
     </table>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+
+<%----%>
 <%--<jsp:include page="docs.jsp"/>--%>
 </body>
 </html>

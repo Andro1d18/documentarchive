@@ -1,6 +1,6 @@
 package org.zhezlov.documentarchive.service;
 
-import org.zhezlov.documentarchive.dao.UserDao;
+import org.zhezlov.documentarchive.dao.UserRepository;
 import org.zhezlov.documentarchive.model.Role;
 import org.zhezlov.documentarchive.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +24,12 @@ import java.util.Set;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userRepository;
 
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(username);
+        User user = userRepository.findByUsername(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 

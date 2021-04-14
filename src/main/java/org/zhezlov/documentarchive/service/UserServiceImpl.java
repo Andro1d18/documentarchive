@@ -1,7 +1,7 @@
 package org.zhezlov.documentarchive.service;
 
 import org.zhezlov.documentarchive.dao.RoleDao;
-import org.zhezlov.documentarchive.dao.UserDao;
+import org.zhezlov.documentarchive.dao.UserRepository;
 import org.zhezlov.documentarchive.model.Role;
 import org.zhezlov.documentarchive.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userRepository;
 
     @Autowired
     private RoleDao roleDao;
@@ -35,11 +35,11 @@ public class UserServiceImpl implements UserService {
         Set<Role> roles = new HashSet<>();
         roles.add(roleDao.getOne(1L));
         user.setRoles(roles);
-        userDao.save(user);
+        userRepository.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
-        return userDao.findByUsername(username);
+        return userRepository.findByUsername(username);
     }
 }

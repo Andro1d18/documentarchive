@@ -8,6 +8,8 @@
   <name>Document Archive</name>
   <url>http://maven.apache.org</url>
 
+  <!--todo поднять версию спринга до 5-->
+
   <properties>
     <spring.version>4.2.0.RELEASE</spring.version>
     <spring-security.version>4.0.2.RELEASE</spring-security.version>
@@ -97,6 +99,11 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
     </dependency>
   </dependencies>
   <build>
