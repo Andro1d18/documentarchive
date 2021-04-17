@@ -1,6 +1,5 @@
 package org.zhezlov.documentarchive.service;
 
-import org.zhezlov.documentarchive.dao.RoleDao;
 import org.zhezlov.documentarchive.dao.UserRepository;
 import org.zhezlov.documentarchive.model.Role;
 import org.zhezlov.documentarchive.model.User;
@@ -24,16 +23,13 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private RoleDao roleDao;
-
-    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<>();
-        roles.add(roleDao.getOne(1L));
+        roles.add(Role.USER);
         user.setRoles(roles);
         userRepository.save(user);
     }

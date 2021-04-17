@@ -35,6 +35,14 @@ CREATE TABLE user_roles
     UNIQUE (user_id, role_id)
 );
 
+CREATE TABLE user_rolesss
+(
+    user_id INT NOT NULL,
+    role    VARCHAR(100),
+    CONSTRAINT user_roles_idx UNIQUE (user_id, role),
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
+
 CREATE TABLE documents
 (
     id          INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -61,6 +69,10 @@ INSERT INTO user_roles
 VALUES (1, 2);
 INSERT INTO user_roles
 VALUES (2, 1);
+
+INSERT INTO user_rolesss
+VALUES (1, 'ADMIN'),
+       (2, 'USER');
 
 INSERT INTO documents (name, description, author, created)
 VALUES ('файл.doc', 'пример устаревшего MS word', 1, '2020-11-01 14:30:00'),
