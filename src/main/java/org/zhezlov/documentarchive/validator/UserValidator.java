@@ -1,12 +1,12 @@
 package org.zhezlov.documentarchive.validator;
 
 import org.zhezlov.documentarchive.model.User;
-import org.zhezlov.documentarchive.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+import org.zhezlov.documentarchive.service.UserService;
 
 /**
  * Validator for {@link User} class,
