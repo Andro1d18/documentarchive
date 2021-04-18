@@ -27,7 +27,7 @@ public class User {
     private String confirmPassword;
 
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "user_rolesss", joinColumns = @JoinColumn(name = "user_id"),
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
                     uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role"}, name = "user_roles_idx")})
     @Column(name = "role")
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)

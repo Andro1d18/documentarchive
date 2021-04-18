@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS user_roles;
-DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS user_rolesss;
 DROP TABLE IF EXISTS documents;
 DROP TABLE IF EXISTS users;
 
@@ -10,32 +9,13 @@ CREATE TABLE users
     id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-
     UNIQUE  (username)
 );
 
 
--- Table: roles
-CREATE TABLE roles
-(
-    id   INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
-);
 
 
--- Table for mapping user and roles: user_roles
 CREATE TABLE user_roles
-(
-    user_id INT NOT NULL,
-    role_id INT NOT NULL,
-
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (role_id) REFERENCES roles (id),
-
-    UNIQUE (user_id, role_id)
-);
-
-CREATE TABLE user_rolesss
 (
     user_id INT NOT NULL,
     role    VARCHAR(100),
@@ -60,17 +40,7 @@ VALUES (1, 'andro1d1', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3
 INSERT INTO users
 VALUES (2, 'user', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG');
 
-INSERT INTO roles
-VALUES (1, 'ROLE_USER');
-INSERT INTO roles
-VALUES (2, 'ROLE_ADMIN');
-
 INSERT INTO user_roles
-VALUES (1, 2);
-INSERT INTO user_roles
-VALUES (2, 1);
-
-INSERT INTO user_rolesss
 VALUES (1, 'ADMIN'),
        (2, 'USER');
 
