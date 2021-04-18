@@ -1,6 +1,7 @@
 package org.zhezlov.documentarchive.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,9 +33,10 @@ public class User {
                     uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role"}, name = "user_roles_idx")})
     @Column(name = "role")
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-//    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
+    List<Document> documents;
 
     public Long getId() {
         return id;
@@ -73,5 +76,12 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
     }
 }

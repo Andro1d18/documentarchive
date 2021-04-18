@@ -24,6 +24,9 @@ public class DocumentServiceImpl implements DocumentService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    SecurityService securityService;
+
     @Override
     public List<Document> getAll() {
 
@@ -49,7 +52,12 @@ public class DocumentServiceImpl implements DocumentService {
 
     @Override
     public void create(Document document) {
+        document.setAuthorId(getLoggedUser().getId());
         Document createdDocument = documentRepository.save(document); //перенести указание пользователя из контроллера в сервисы
         LOG.info("created document: {}", createdDocument);
+    }
+
+    private User getLoggedUser(){
+        return userRepository.findByUsername(securityService.findLoggedInUsername());
     }
 }

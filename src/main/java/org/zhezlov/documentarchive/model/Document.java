@@ -25,9 +25,19 @@ public class Document {
     @Column(name = "author")
     private Long authorId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author", insertable = false, updatable = false)
+    private User author;
+
     @Column(name = "created")
     @NotNull
     private Timestamp dateTimeCreated;
+
+    public Document(String name, String description, Timestamp dateTimeCreated) {
+        this.name = name;
+        this.description = description;
+        this.dateTimeCreated = dateTimeCreated;
+    }
 
     public Timestamp getDateTimeCreated() {
         return dateTimeCreated;

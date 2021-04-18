@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <base href="${pageContext.request.contextPath}/"/>
 
     <title>Welcome</title>
 
@@ -34,7 +35,7 @@
 
 </div>
 <div>
-    <a href="document/create">Add document</a>
+    <a href="documents/create">Add document</a>
 </div>
 
 <div class="table-responsive">

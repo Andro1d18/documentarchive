@@ -14,6 +14,6 @@
 
     <context:component-scan base-package="org.zhezlov.documentarchive.*"/>
 
-    <context:property-placeholder location="classpath:database.properties"/>
+    <context:property-placeholder location="classpath:application.properties"/>
 
 </beans>

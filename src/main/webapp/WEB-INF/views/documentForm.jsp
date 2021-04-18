@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <base href="${pageContext.request.contextPath}/"/>
 
     <title>Add document</title>
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +27,7 @@
     <jsp:useBean id="document" type="org.zhezlov.documentarchive.model.Document" scope="request"/>
     <h3></h3>
     <hr>
-    <form method="post" action="update" class="form-control-static">
+    <form method="post" action="documents/update" class="form-control-static">
         <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
         <input type="hidden" name="id" value="${document.id}">
         <dl>
