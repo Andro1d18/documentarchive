@@ -59,7 +59,9 @@ public class DocumentService {
         document.setAuthorId(authorId);
         documentRepository.save(document);
     }
-
+    public void delete (Long id){
+        documentRepository.delete(id);
+    }
     private User getLoggedUser(){
         return userRepository.findByUsername(securityService.findLoggedInUsername());
     }

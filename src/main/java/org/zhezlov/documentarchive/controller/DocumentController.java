@@ -48,4 +48,12 @@ public class DocumentController {
         }
         return "redirect:/welcome";
     }
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(HttpServletRequest request){
+        Long id = Long.parseLong(request.getParameter("id"));
+        documentService.delete(id);
+        return "redirect:/welcome";
+    }
+
+
 }
