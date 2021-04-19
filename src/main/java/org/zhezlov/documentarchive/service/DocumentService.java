@@ -24,10 +24,10 @@ public class DocumentService {
     private UserRepository userRepository;
 
     @Autowired
-    SecurityService securityService;
+    private SecurityService securityService;
+
 
     public List<Document> getAll() {
-
         String username = getUsername();
         User user = userRepository.findByUsername(username);
         if (user != null)
@@ -50,7 +50,18 @@ public class DocumentService {
         LOG.info("created document: {}", createdDocument);
     }
 
+    public Document get(Long id){
+        return documentRepository.findOne(id);
+    }
+
+    public void update(Document document, Long id, Long authorId){
+        document.setId(id);
+        document.setAuthorId(authorId);
+        documentRepository.save(document);
+    }
+
     private User getLoggedUser(){
         return userRepository.findByUsername(securityService.findLoggedInUsername());
     }
+
 }

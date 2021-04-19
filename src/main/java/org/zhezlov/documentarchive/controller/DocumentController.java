@@ -22,18 +22,30 @@ public class DocumentController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Model model) {
-
         model.addAttribute("document", new Document());
         return "documentForm";
     }
 
-    @RequestMapping(value = "/update")
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String update(Model model, HttpServletRequest request){ //toDo вместое реквеста сделать moduleAttribute
+        String id = request.getParameter("id");
+        if (id != null)
+            model.addAttribute("document", documentService.get(Long.parseLong(id)));
+        return "documentForm";
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
     public String updateOrCreate(HttpServletRequest request){ //toDo вместое реквеста сделать moduleAttribute
-        documentService.create(new Document(
+        Document document = new Document(
                 request.getParameter("name"),
                 request.getParameter("description"),
-                Timestamp.from(Instant.now()))
-        );
+                Timestamp.from(Instant.now()));
+        String id = request.getParameter("id");
+        if (id == null || id.isEmpty()){
+            documentService.create(document);
+        } else {
+            documentService.update(document, Long.parseLong(id), Long.parseLong(request.getParameter("authorId")));
+        }
         return "redirect:/welcome";
     }
 }

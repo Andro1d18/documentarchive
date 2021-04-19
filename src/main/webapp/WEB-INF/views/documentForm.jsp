@@ -27,9 +27,10 @@
     <jsp:useBean id="document" type="org.zhezlov.documentarchive.model.Document" scope="request"/>
     <h3></h3>
     <hr>
-    <form method="post" action="documents/update" class="form-control-static">
+    <form method="post" action="documents/" class="form-control-static">
         <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
         <input type="hidden" name="id" value="${document.id}">
+        <input type="hidden" name="authorId" value="${document.authorId}">
         <dl>
             <dt>Name:</dt>
             <dd><input type="text" value="${document.name}" name="name" required></dd>
