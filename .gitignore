@@ -2,7 +2,7 @@
 *.class
 target/*
 out/*
-
+loadFiles/*
 /.war
 /.ear
 /.jar

@@ -11,6 +11,7 @@
         <intercept-url pattern="/" access="hasAnyAuthority('USER', 'ADMIN')"/>
         <intercept-url pattern="/welcome" access="hasAnyAuthority('USER', 'ADMIN')"/>
         <intercept-url pattern="/admin" access="hasAuthority('ADMIN')"/>
+        <intercept-url pattern="/documents/**" access="hasAnyAuthority('USER','ADMIN')"/>
 
         <form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error"
                     username-parameter="username" password-parameter="password"/>
@@ -20,14 +21,14 @@
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">
-            <password-encoder ref="encoder"></password-encoder>
+            <password-encoder ref="passwordEncoder"></password-encoder>
         </authentication-provider>
     </authentication-manager>
 
     <beans:bean id="userDetailsServiceImpl"
                 class="org.zhezlov.documentarchive.service.UserDetailsServiceImpl"></beans:bean>
 
-    <beans:bean id="encoder"
+    <beans:bean id="passwordEncoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="11"/>
     </beans:bean>

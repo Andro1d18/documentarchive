@@ -6,17 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.zhezlov.documentarchive.Utils.FileManager;
+import org.zhezlov.documentarchive.Utils.FilePathUtil;
 import org.zhezlov.documentarchive.dao.DocumentRepository;
 import org.zhezlov.documentarchive.dao.UserRepository;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.model.User;
 
+import java.io.*;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.*;
 
 @Service
 public class DocumentService {
-
     public static final Logger LOG = LoggerFactory.getLogger(DocumentService.class);
+
     @Autowired
     private DocumentRepository documentRepository;
 
@@ -26,6 +32,8 @@ public class DocumentService {
     @Autowired
     private SecurityService securityService;
 
+    @Autowired
+    FileManager fileManager;
 
     public List<Document> getAll() {
         String username = getUsername();
@@ -41,28 +49,38 @@ public class DocumentService {
             return ((UserDetails) principal).getUsername();
         }
         return principal.toString();
-
     }
 
-    public void create(Document document) {
-        document.setAuthorId(getLoggedUser().getId());
+    public void create(String description, MultipartFile multipartFile) throws IOException {
+        String key = UUID.randomUUID().toString();
+        fileManager.create(multipartFile, key);
+        String fileName = multipartFile.getOriginalFilename();
+        Document document = new Document(
+                fileName,
+                description,
+                key,
+                Timestamp.from(Instant.now()),
+                getLoggedUser().getId());
         Document createdDocument = documentRepository.save(document);
-        LOG.info("created document: {}", createdDocument);
+        LOG.info("created document: {}", createdDocument.getName());
     }
 
-    public Document get(Long id){
-        return documentRepository.findOne(id);
+    public Document get(Long id) {
+        return documentRepository.getOne(id);
     }
 
-    public void update(Document document, Long id, Long authorId){
-        document.setId(id);
-        document.setAuthorId(authorId);
+    public void update(Long id, String description) {
+        Document document = get(id);
+        document.setDescription(description);
         documentRepository.save(document);
     }
-    public void delete (Long id){
-        documentRepository.delete(id);
+
+    public void delete(Long id) throws IOException {
+        fileManager.delete(get(id).getKey());
+        documentRepository.delete(get(id));
     }
-    private User getLoggedUser(){
+
+    private User getLoggedUser() {
         return userRepository.findByUsername(securityService.findLoggedInUsername());
     }
 

@@ -5,14 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.service.DocumentService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.io.IOException;
 
 
 @Controller
@@ -31,38 +30,107 @@ public class DocumentController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String update(Model model, HttpServletRequest request){ //toDo вместое реквеста сделать moduleAttribute
+    public String update(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
         String id = request.getParameter("id");
         if (id != null) {
             LOG.info("forward for update document with id ={}", id);
             model.addAttribute("document", documentService.get(Long.parseLong(id)));
         }
-        return "documentForm";
+        return "documentUpdateForm";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String updateOrCreate(HttpServletRequest request){ //toDo вместое реквеста сделать moduleAttribute
-        Document document = new Document(
-                request.getParameter("name"),
-                request.getParameter("description"),
-                Timestamp.from(Instant.now()));
-        String id = request.getParameter("id");
-        if (id == null || id.isEmpty()){
-            LOG.debug("create document");
-            documentService.create(document);
-        } else {
-            LOG.debug("update document with id = {}", id);
-            documentService.update(document, Long.parseLong(id), Long.parseLong(request.getParameter("authorId")));
+    @PostMapping("/update")
+    public String update(Model model,     //при update можно только менять Описание. Если нужно загрузить другой файл, нужно удалять предыдущю запись
+                         @RequestParam("id") String id,
+                         @RequestParam("description") String description) {
+        documentService.update(Long.parseLong(id), description);
+        return "redirect:/welcome";
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String create(@RequestParam("description") String description,
+                         @RequestParam("file") MultipartFile multipartFile) {
+        try {
+            documentService.create(description, multipartFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+            LOG.info("FILED upload file because: {}", e.getMessage());
+            //return "redirect:/documentForm"; // toDo переделать на возврат с сообщением об ошибке
+        }
+
+        return "redirect:/welcome";
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(HttpServletRequest request) {
+        Long id = Long.parseLong(request.getParameter("id"));
+        LOG.debug("delete document with id = {}", id);
+        try {
+            documentService.delete(id);
+        } catch (IOException e) {
+            e.printStackTrace(); // toDo переделать на возврат с сообщением об ошибке
         }
         return "redirect:/welcome";
     }
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String delete(HttpServletRequest request){
-        Long id = Long.parseLong(request.getParameter("id"));
-        LOG.debug("delete document with id = {}", id);
-        documentService.delete(id);
-        return "redirect:/welcome";
-    }
 
+
+//    @Autowired
+//    private FileValidator fileValidator; //автосвязывание с бином FileValidator
+//
+//    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+//    @ResponseBody
+//    public ModelAndView uploadFile(@ModelAttribute("uploadedFile") UploadedFile uploadedFile, BindingResult result) {// имена параметров (тут - "uploadedFile") - из формы JSP.
+//
+//        ModelAndView modelAndView = new ModelAndView();
+//
+//        String fileName = null;
+//
+//        MultipartFile file = uploadedFile.getFile();
+//        fileValidator.validate(uploadedFile, result);
+//
+//        if (result.hasErrors()) {
+//            modelAndView.setViewName("documents");
+//        } else {
+//
+//            try {
+//                byte[] bytes = file.getBytes();
+//
+//                fileName = file.getOriginalFilename();
+//
+//                String rootPath = "C:\\path\\";
+//                File dir = new File(rootPath + File.separator + "loadFiles");
+//
+//                if (!dir.exists()) {
+//                    dir.mkdirs();
+//                }
+//
+//                File loadFile = new File(dir.getAbsolutePath() + File.separator + fileName);
+//
+//                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(loadFile));
+//                stream.write(bytes);
+//                stream.flush();
+//                stream.close();
+//
+//                LOG.info("uploaded: " + loadFile.getAbsolutePath());
+//
+//                RedirectView redirectView = new RedirectView("welcome");
+//                redirectView.setStatusCode(HttpStatus.FOUND);
+//                modelAndView.setView(redirectView);
+//                modelAndView.addObject("filename", fileName);
+//
+//            } catch (IOException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//
+//        }
+//
+//        return modelAndView;
+//    }
+//
+//    @RequestMapping(value = "/fileuploaded", method = RequestMethod.GET)
+//    public String fileUploaded() {
+//        return "fileuploaded";
+//    }
 
 }

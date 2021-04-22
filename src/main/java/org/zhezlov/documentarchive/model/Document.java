@@ -1,17 +1,20 @@
 package org.zhezlov.documentarchive.model;
 
+import org.hibernate.annotations.Proxy;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
+
 @Entity
 @Table(name = "documents")
+@Proxy(lazy=false) //добавил т.к. возникала ошибка could not initialize proxy [org.zhezlov.documentarchive.model.Document#77] - no Session
 public class Document {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
@@ -22,10 +25,13 @@ public class Document {
     @NotBlank
     private String description;
 
+    @Column(name = "key")
+    private String key;
+
     @Column(name = "author")
     private Long authorId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "author", insertable = false, updatable = false)
     private User author;
 
@@ -33,10 +39,14 @@ public class Document {
     @NotNull
     private Timestamp dateTimeCreated;
 
-    public Document(String name, String description, Timestamp dateTimeCreated) {
+
+
+    public Document(String name, String description, String key, Timestamp dateTimeCreated, Long authorId) {
         this.name = name;
         this.description = description;
+        this.key = key;
         this.dateTimeCreated = dateTimeCreated;
+        this.authorId = authorId;
     }
 
     public Timestamp getDateTimeCreated() {
@@ -81,6 +91,17 @@ public class Document {
 
     public void setAuthorId(Long authorId) {
         this.authorId = authorId;
+    }
+
+    public boolean isNew(){
+        return id == null;
+    }
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
 }
