@@ -24,6 +24,9 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private SecurityService securityService;
+
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void save(User user) {
@@ -42,5 +45,9 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public String getNameLoggedUser() {
+        return securityService.findLoggedUsername();
     }
 }

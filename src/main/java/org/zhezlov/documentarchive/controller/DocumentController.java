@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.service.DocumentService;
+import org.zhezlov.documentarchive.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -22,11 +23,34 @@ public class DocumentController {
     @Autowired
     private DocumentService documentService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Model model) {
         LOG.info("forward for create document");
         model.addAttribute("document", new Document());
         return "documentForm";
+    }
+
+
+    @RequestMapping(value = "/sharing", method = RequestMethod.GET)
+    public String sharing(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
+        String id = request.getParameter("id");
+        if (id != null) {
+            LOG.info("forward for update document with id ={}", id);
+            model.addAttribute("document", documentService.get(Long.parseLong(id)));
+            model.addAttribute("users", userService.findAll());
+            model.addAttribute("loggedUser", userService.getNameLoggedUser());
+        }
+        return "documentSharing";
+    }
+    @PostMapping("/sharing")
+    public String sharing(@RequestParam("id")String id, @RequestParam("userId")String userId) { //toDo вместое реквеста сделать moduleAttribute
+        if (userId != null && id != null) {
+            documentService.shareDocument(Long.parseLong(id),Long.parseLong(userId));
+        }
+        return "redirect:/welcome";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)

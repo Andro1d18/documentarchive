@@ -89,7 +89,11 @@ public class DocumentService {
     }
 
     private User getLoggedUser() {
-        return userRepository.findByUsername(securityService.findLoggedInUsername());
+        return userRepository.findByUsername(securityService.findLoggedUsername());
     }
 
+    public void shareDocument(Long id, Long userId) {
+        documentRepository.unsharingDocumentForOneUser(id,userId);
+        documentRepository.sharingDocumentForOneUser(id, userId);
+    }
 }

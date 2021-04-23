@@ -29,7 +29,7 @@ public class SecurityServiceImpl implements SecurityService {
     private UserDetailsService userDetailsService;
 
     @Override
-    public String findLoggedInUsername() {
+    public String findLoggedUsername() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             return ((UserDetails) principal).getUsername();

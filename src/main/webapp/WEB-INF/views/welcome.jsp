@@ -47,8 +47,9 @@
             <th><c:out value="description"/></th>
             <th><c:out value="author"/></th>
             <th><c:out value="created"/></th>
-            <th></th>
-            <th></th>
+            <th><c:out value="sharing"/></th>
+            <th><c:out value="update"/></th>
+            <th><c:out value="delete"/></th>
         </tr>
         </thead>
         <c:forEach items="${documents}" var="document">
@@ -58,6 +59,7 @@
                 <td>${document.description}</td>
                 <td>${document.authorId}</td>
                 <td>${document.dateTimeCreated}</td>
+                <td><a href="documents/sharing?id=${document.id}">sharing</a></td>
                 <td><a href="documents/update?id=${document.id}">update</a></td>
                 <td><a href="documents/delete?id=${document.id}">delete</a></td>
             </tr>

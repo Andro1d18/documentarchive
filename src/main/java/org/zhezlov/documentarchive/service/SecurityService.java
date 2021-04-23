@@ -8,7 +8,7 @@ package org.zhezlov.documentarchive.service;
 
 public interface SecurityService {
 
-    String findLoggedInUsername();
+    String findLoggedUsername();
 
     void autoLogin(String username, String password);
 }
