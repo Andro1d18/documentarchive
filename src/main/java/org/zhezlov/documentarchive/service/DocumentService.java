@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.zhezlov.documentarchive.Utils.FileManager;
-import org.zhezlov.documentarchive.Utils.FilePathUtil;
 import org.zhezlov.documentarchive.dao.DocumentRepository;
 import org.zhezlov.documentarchive.dao.UserRepository;
 import org.zhezlov.documentarchive.model.Document;
@@ -35,7 +34,15 @@ public class DocumentService {
     @Autowired
     FileManager fileManager;
 
-    public List<Document> getAll() {
+    public List<Document> getAll(){             //return all document with everything grants
+        User user = userRepository.findByUsername(getLoggedUser().getUsername());
+        if (user != null)
+            return documentRepository.getAllwithAnyGrants(user.getId());
+        return Collections.emptyList();
+
+    }
+
+    public List<Document> getAllwithAuthorId() {    //return document only logged user = authorId
         String username = getUsername();
         User user = userRepository.findByUsername(username);
         if (user != null)
@@ -62,6 +69,7 @@ public class DocumentService {
                 Timestamp.from(Instant.now()),
                 getLoggedUser().getId());
         Document createdDocument = documentRepository.save(document);
+        documentRepository.sharingDocumentForOneUser(createdDocument.getId(),getLoggedUser().getId());  //ToDo переделать если останется время - нужно создать свою имплементацию Repositories, а внутри юзать JpaRepository
         LOG.info("created document: {}", createdDocument.getName());
     }
 
