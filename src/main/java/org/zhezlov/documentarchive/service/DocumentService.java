@@ -34,7 +34,7 @@ public class DocumentService {
     @Autowired
     FileManager fileManager;
 
-    public List<Document> getAll(){             //return all document with everything grants
+    public List<Document> getAll() {             //return all document with everything grants
         User user = userRepository.findByUsername(getLoggedUser().getUsername());
         if (user != null)
             return documentRepository.getAllwithAnyGrants(user.getId());
@@ -69,7 +69,7 @@ public class DocumentService {
                 Timestamp.from(Instant.now()),
                 getLoggedUser().getId());
         Document createdDocument = documentRepository.save(document);
-        documentRepository.sharingDocumentForOneUser(createdDocument.getId(),getLoggedUser().getId());  //ToDo переделать если останется время - нужно создать свою имплементацию Repositories, а внутри юзать JpaRepository
+        documentRepository.sharingDocumentForOneUser(createdDocument.getId(), getLoggedUser().getId());  //ToDo переделать если останется время - нужно создать свою имплементацию Repositories, а внутри юзать JpaRepository
         LOG.info("created document: {}", createdDocument.getName());
     }
 
@@ -93,7 +93,23 @@ public class DocumentService {
     }
 
     public void shareDocument(Long id, Long userId) {
-        documentRepository.unsharingDocumentForOneUser(id,userId);
+        documentRepository.unsharingDocumentForOneUser(id, userId);
         documentRepository.sharingDocumentForOneUser(id, userId);
+    }
+
+    public void shareDocumentForAllUsers(Long id) {
+        for (User user :
+                userRepository.findAll()) {
+            documentRepository.unsharingDocumentForOneUser(id, user.getId());
+            documentRepository.sharingDocumentForOneUser(id, user.getId());
+        }
+    }
+
+    public void unsharingForAllUsers(Long id) {
+        for (User user :
+                userRepository.findAll()) {
+            if (!user.getId().equals(get(id).getAuthorId()))
+                documentRepository.unsharingDocumentForOneUser(id, user.getId());
+        }
     }
 }

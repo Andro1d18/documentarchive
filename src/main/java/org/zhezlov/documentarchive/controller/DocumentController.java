@@ -46,13 +46,26 @@ public class DocumentController {
         return "documentSharing";
     }
     @PostMapping("/sharing")
-    public String sharing(@RequestParam("id")String id, @RequestParam("userId")String userId) { //toDo вместое реквеста сделать moduleAttribute
+    public String sharing(@RequestParam("id")String id,
+                          @RequestParam(value = "userId", required = false)String userId,
+                          @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers) { //toDo вместое реквеста сделать moduleAttribute
+        if (forAllUsers){
+            documentService.shareDocumentForAllUsers(Long.parseLong(id));
+            return "redirect:/welcome";
+        }
         if (userId != null && id != null) {
             documentService.shareDocument(Long.parseLong(id),Long.parseLong(userId));
         }
         return "redirect:/welcome";
     }
 
+    @PostMapping("/unsharing")
+    public String sharing(@RequestParam("id")String id) {
+        if (id != null) {
+            documentService.unsharingForAllUsers(Long.parseLong(id));
+        }
+        return "redirect:/welcome";
+    }
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
         String id = request.getParameter("id");
@@ -81,7 +94,6 @@ public class DocumentController {
             LOG.info("FILED upload file because: {}", e.getMessage());
             //return "redirect:/documentForm"; // toDo переделать на возврат с сообщением об ошибке
         }
-
         return "redirect:/welcome";
     }
 

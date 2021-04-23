@@ -2,6 +2,7 @@ package org.zhezlov.documentarchive.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -29,7 +30,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-                    uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role"}, name = "user_roles_idx")})
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"}, name = "user_roles_idx")})
     @Column(name = "role")
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     private Set<Role> roles;
@@ -76,11 +77,30 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
     public List<Document> getDocuments() {
         return documents;
     }
 
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id.equals(user.id) &&
+                username.equals(user.username) &&
+                password.equals(user.password) &&
+                Objects.equals(confirmPassword, user.confirmPassword) &&
+                roles.equals(user.roles) &&
+                Objects.equals(documents, user.documents);
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().intValue();
     }
 }
