@@ -26,7 +26,7 @@ public class DocumentController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @GetMapping("/create")
     public String create(Model model) {
         LOG.info("forward for create document");
         model.addAttribute("document", new Document());
@@ -34,7 +34,7 @@ public class DocumentController {
     }
 
 
-    @RequestMapping(value = "/sharing", method = RequestMethod.GET)
+    @GetMapping("/sharing")
     public String sharing(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
         String id = request.getParameter("id");
         if (id != null) {
@@ -66,7 +66,7 @@ public class DocumentController {
         }
         return "redirect:/welcome";
     }
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    @GetMapping("/update")
     public String update(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
         String id = request.getParameter("id");
         if (id != null) {
@@ -84,7 +84,7 @@ public class DocumentController {
         return "redirect:/welcome";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping("/create")
     public String create(@RequestParam("description") String description,
                          @RequestParam("file") MultipartFile multipartFile) {
         try {
@@ -97,7 +97,7 @@ public class DocumentController {
         return "redirect:/welcome";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @GetMapping("/delete")
     public String delete(HttpServletRequest request) {
         Long id = Long.parseLong(request.getParameter("id"));
         LOG.debug("delete document with id = {}", id);
