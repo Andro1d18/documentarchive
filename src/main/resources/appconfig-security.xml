@@ -7,6 +7,9 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <http pattern="/resources/**" security="none"/>
+    <http pattern="/webjars/**" security="none"/>
+
     <http auto-config="true">
         <intercept-url pattern="/" access="hasAnyAuthority('USER', 'ADMIN')"/>
         <intercept-url pattern="/welcome" access="hasAnyAuthority('USER', 'ADMIN')"/>

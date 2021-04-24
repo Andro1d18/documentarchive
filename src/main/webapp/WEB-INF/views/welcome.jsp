@@ -6,24 +6,29 @@
 
 <html>
 <head>
-<%--    <meta charset="utf-8">--%>
-<%--    <meta http-equiv="X-UA-Compatible" content="IE=edge">--%>
-<%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
-<%--    <meta name="description" content="">--%>
-<%--    <meta name="author" content="">--%>
+
+    <link rel="stylesheet" href=${pageContext.request.contextPath}/resources/css/style.css?v=2">
+    <link rel="stylesheet" href="webjars/bootstrap/4.6.0-1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webjars/noty/3.1.4/demo/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="webjars/datatables/1.10.24/css/dataTables.bootstrap4.min.css">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+
+    <script type="text/javascript" src="webjars/jquery/3.6.0/jquery.min.js" defer></script>
+    <script type="text/javascript" src="webjars/bootstrap/4.6.0-1/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="webjars/datatables/1.10.24/js/jquery.dataTables.min.js" defer></script>
+    <script type="text/javascript" src="webjars/datatables/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <base href="${pageContext.request.contextPath}/"/>
 
     <title>Welcome</title>
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-<%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--%>
-    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-
+<script type="text/javascript" src="resources/js/document.js" defer></script>
+<script type="text/javascript" src="resources/js/common.js" defer></script>
 <div class="container">
 
     <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -31,8 +36,8 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
-        </h2>
+        <h3 class="display-4">Welcome ${pageContext.request.userPrincipal.name} | <a class="display-4" onclick="document.forms['logoutForm'].submit()">Logout</a>
+        </h3>
 <%-- toDo переделать pageContext на c:out (везде где выводится текст) во всех jsp--%>
     </c:if>
 
@@ -42,7 +47,7 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-bordered table-striped table-hover">
+    <table class="table table-bordered table-striped" id="datatable">
         <thead >
         <tr>
             <th><c:out value="name"/></th>

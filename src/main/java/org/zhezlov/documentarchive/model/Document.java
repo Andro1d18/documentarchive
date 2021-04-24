@@ -49,16 +49,16 @@ public class Document {
         this.authorId = authorId;
     }
 
+    public Document() {
+
+    }
+
     public Timestamp getDateTimeCreated() {
         return dateTimeCreated;
     }
 
     public void setDateTimeCreated(Timestamp dateTimeCreated) {
         this.dateTimeCreated = dateTimeCreated;
-    }
-
-    public Document() {
-
     }
 
     public Long getId() {
