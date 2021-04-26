@@ -30,6 +30,10 @@ $(function () {
             {
                 "defaultContent": "delete",
                 "orderable": false
+            },
+            {
+                "defaultContent": "preview",
+                "orderable": false
             }
         ],
         "order": [
