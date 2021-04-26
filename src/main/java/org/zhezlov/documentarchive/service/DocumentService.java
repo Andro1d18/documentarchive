@@ -7,7 +7,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
+import org.zhezlov.documentarchive.UploadedFile;
 import org.zhezlov.documentarchive.Utils.FileManager;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.model.User;
@@ -15,6 +17,7 @@ import org.zhezlov.documentarchive.repository.DocumentRepository;
 import org.zhezlov.documentarchive.repository.UserRepository;
 import org.zhezlov.documentarchive.to.DocumentTo;
 import org.zhezlov.documentarchive.to.DocumentsUtils;
+import org.zhezlov.documentarchive.validator.FileValidator;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -37,6 +40,9 @@ public class DocumentService {
 
     @Autowired
     FileManager fileManager;
+
+    @Autowired
+    FileValidator fileValidator;
 
     public List<DocumentTo> getAll() {             //return all document with everything grants
         User user = userRepository.findByUsername(getLoggedUser().getUsername());
@@ -65,7 +71,7 @@ public class DocumentService {
     }
 
     @Transactional
-    public void create(String description, MultipartFile multipartFile) throws IOException {
+    public void create(String description, MultipartFile multipartFile) throws IOException { //ToDo если останется время, сделай через темп файлы (вначале создание в темп директории, затем создание в моделе, затем перенос в место дислокаци)
         if (multipartFile != null) {
             String fileName = multipartFile.getOriginalFilename();
             Document document = new Document(fileName, description, Timestamp.from(Instant.now()), getLoggedUser().getId());
@@ -124,5 +130,9 @@ public class DocumentService {
             if (!user.getId().equals(get(id).getAuthorId()))
                 documentRepository.unsharingDocumentForOneUser(id, user.getId());
         }
+    }
+
+    public void validateFile(UploadedFile uploadFile, BindingResult bindingResult){
+        fileValidator.validate(uploadFile, bindingResult);
     }
 }

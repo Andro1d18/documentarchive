@@ -5,9 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
+import org.zhezlov.documentarchive.UploadedFile;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.service.DocumentService;
 import org.zhezlov.documentarchive.service.UserService;
@@ -35,6 +39,22 @@ public class DocumentController {
         return "documentForm";
     }
 
+    @PostMapping("/documents/create")
+    public String create(@RequestParam("description") String description,
+                         @ModelAttribute("uploadedFile") UploadedFile uploadedFile,
+                         BindingResult bindingResult) {
+        documentService.validateFile(uploadedFile, bindingResult);
+        if (bindingResult.hasErrors())
+            return "documentForm";
+        try {
+            documentService.create(description, uploadedFile.getFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+            LOG.info("FILED upload file because: {}", e.getMessage());
+            //return "redirect:/documentForm"; // toDo переделать на возврат с сообщением об ошибке
+        }
+        return "redirect:/welcome";
+    }
 
     @GetMapping("/documents/sharing")
     public String sharing(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
@@ -47,27 +67,29 @@ public class DocumentController {
         }
         return "documentSharing";
     }
+
     @PostMapping("/documents/sharing")
-    public String sharing(@RequestParam("id")String id,
-                          @RequestParam(value = "userId", required = false)String userId,
+    public String sharing(@RequestParam("id") String id,
+                          @RequestParam(value = "userId", required = false) String userId,
                           @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers) { //toDo вместое реквеста сделать moduleAttribute
-        if (forAllUsers){
+        if (forAllUsers) {
             documentService.shareDocumentForAllUsers(Long.parseLong(id));
             return "redirect:/welcome";
         }
         if (userId != null && id != null) {
-            documentService.shareDocument(Long.parseLong(id),Long.parseLong(userId));
+            documentService.shareDocument(Long.parseLong(id), Long.parseLong(userId));
         }
         return "redirect:/welcome";
     }
 
     @PostMapping("/documents/unsharing")
-    public String sharing(@RequestParam("id")String id) {
+    public String sharing(@RequestParam("id") String id) {
         if (id != null) {
             documentService.unsharingForAllUsers(Long.parseLong(id));
         }
         return "redirect:/welcome";
     }
+
     @GetMapping("/documents/update")
     public String update(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
         String id = request.getParameter("id");
@@ -86,18 +108,6 @@ public class DocumentController {
         return "redirect:/welcome";
     }
 
-    @PostMapping("/documents/create")
-    public String create(@RequestParam("description") String description,
-                         @RequestParam("file") MultipartFile multipartFile) {
-        try {
-            documentService.create(description, multipartFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-            LOG.info("FILED upload file because: {}", e.getMessage());
-            //return "redirect:/documentForm"; // toDo переделать на возврат с сообщением об ошибке
-        }
-        return "redirect:/welcome";
-    }
 
     @GetMapping("/documents/delete")
     public String delete(HttpServletRequest request) {
@@ -112,7 +122,7 @@ public class DocumentController {
     }
 
     @GetMapping("/documents/downloading")
-    public String downloading(HttpServletRequest request, @RequestParam String id){
+    public String downloading(HttpServletRequest request, @RequestParam String id) {
 
         String filenameForFS = documentService.getFilenameForFS(Long.parseLong(id));
         String uriString = UriUtils.encode(filenameForFS, StandardCharsets.UTF_8);

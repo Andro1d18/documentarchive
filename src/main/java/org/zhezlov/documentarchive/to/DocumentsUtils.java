@@ -25,7 +25,7 @@ public class DocumentsUtils {
         return Arrays.asList(EXTENSION_FOR_PREVIEW).contains(getExtension(document.getName()));
     }
 
-    private static String getExtension(String fileName){
+    public static String getExtension(String fileName){
         String[] fileNameDotSplit = fileName.split("\\.");
         if (fileNameDotSplit.length > 0)
                 return fileNameDotSplit[fileNameDotSplit.length - 1];
