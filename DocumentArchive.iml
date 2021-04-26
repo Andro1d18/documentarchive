@@ -91,5 +91,6 @@
     <orderEntry type="library" name="Maven: org.webjars:datatables:1.10.24" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:datetimepicker:2.5.20-1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.bower:noty:3.1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.bowergithub.kogmbh:viewerjs_release:0.5.9" level="project" />
   </component>
 </module>

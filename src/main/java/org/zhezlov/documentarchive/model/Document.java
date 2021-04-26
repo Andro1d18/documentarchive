@@ -25,9 +25,6 @@ public class Document {
     @NotBlank
     private String description;
 
-    @Column(name = "key")
-    private String key;
-
     @Column(name = "author")
     private Long authorId;
 
@@ -41,10 +38,9 @@ public class Document {
 
 
 
-    public Document(String name, String description, String key, Timestamp dateTimeCreated, Long authorId) {
+    public Document(String name, String description, Timestamp dateTimeCreated, Long authorId) {
         this.name = name;
         this.description = description;
-        this.key = key;
         this.dateTimeCreated = dateTimeCreated;
         this.authorId = authorId;
     }
@@ -95,13 +91,6 @@ public class Document {
 
     public boolean isNew(){
         return id == null;
-    }
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
 }

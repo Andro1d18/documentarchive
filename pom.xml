@@ -155,6 +155,11 @@
             <artifactId>noty</artifactId>
             <version>${webjars-noty.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars.bowergithub.kogmbh</groupId>
+            <artifactId>viewerjs_release</artifactId>
+            <version>0.5.9</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>documentarchive</finalName>

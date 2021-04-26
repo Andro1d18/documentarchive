@@ -6,17 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.zhezlov.documentarchive.Utils.FileManager;
-import org.zhezlov.documentarchive.dao.DocumentRepository;
-import org.zhezlov.documentarchive.dao.UserRepository;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.model.User;
+import org.zhezlov.documentarchive.repository.DocumentRepository;
+import org.zhezlov.documentarchive.repository.UserRepository;
+import org.zhezlov.documentarchive.to.DocumentTo;
+import org.zhezlov.documentarchive.to.DocumentsUtils;
 
-import java.io.*;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class DocumentService {
@@ -34,10 +38,12 @@ public class DocumentService {
     @Autowired
     FileManager fileManager;
 
-    public List<Document> getAll() {             //return all document with everything grants
+    public List<DocumentTo> getAll() {             //return all document with everything grants
         User user = userRepository.findByUsername(getLoggedUser().getUsername());
-        if (user != null)
-            return documentRepository.getAllwithAnyGrants(user.getId());
+        if (user != null) {
+
+            return DocumentsUtils.getTos(documentRepository.getAllwithAnyGrants(user.getId()));
+        }
         return Collections.emptyList();
 
     }
@@ -58,19 +64,26 @@ public class DocumentService {
         return principal.toString();
     }
 
+    @Transactional
     public void create(String description, MultipartFile multipartFile) throws IOException {
-        String key = UUID.randomUUID().toString();
-        fileManager.create(multipartFile, key);
-        String fileName = multipartFile.getOriginalFilename();
-        Document document = new Document(
-                fileName,
-                description,
-                key,
-                Timestamp.from(Instant.now()),
-                getLoggedUser().getId());
-        Document createdDocument = documentRepository.save(document);
-        documentRepository.sharingDocumentForOneUser(createdDocument.getId(), getLoggedUser().getId());  //ToDo переделать если останется время - нужно создать свою имплементацию Repositories, а внутри юзать JpaRepository
-        LOG.info("created document: {}", createdDocument.getName());
+        if (multipartFile != null) {
+            String fileName = multipartFile.getOriginalFilename();
+            Document document = new Document(fileName, description, Timestamp.from(Instant.now()), getLoggedUser().getId());
+            Document createdDocument = documentRepository.save(document);
+            documentRepository.sharingDocumentForOneUser(createdDocument.getId(), getLoggedUser().getId());  //ToDo переделать если останется время - нужно создать свою имплементацию Repositories, а внутри юзать JpaRepository
+            String filenameForFS = getFilenameForFS(createdDocument);
+            fileManager.create(multipartFile, filenameForFS);
+            LOG.info("created document: {}", createdDocument.getName());
+        }
+    }
+
+    public String getFilenameForFS(Document createdDocument) {
+        return createdDocument.getId() + "-" + createdDocument.getName();
+    }
+
+    public String getFilenameForFS(Long id) {
+        Document document = get(id);
+        return document.getId() + "-" + document.getName();
     }
 
     public Document get(Long id) {
@@ -84,7 +97,7 @@ public class DocumentService {
     }
 
     public void delete(Long id) throws IOException {
-        fileManager.delete(get(id).getKey());
+        fileManager.delete(getFilenameForFS(id));
         documentRepository.delete(get(id));
     }
 

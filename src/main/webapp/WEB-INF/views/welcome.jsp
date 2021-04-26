@@ -27,8 +27,8 @@
 
 </head>
 <body>
-<script type="text/javascript" src="resources/js/document.js" defer></script>
-<script type="text/javascript" src="resources/js/common.js" defer></script>
+<script type="text/javascript" src="${contextPath}/resources/js/document.js" defer></script>
+<script type="text/javascript" src="${contextPath}/resources/js/common.js" defer></script>
 <div class="container">
 
     <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -36,9 +36,10 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h3 class="display-4">Welcome ${pageContext.request.userPrincipal.name} | <a class="display-4" onclick="document.forms['logoutForm'].submit()">Logout</a>
+        <h3 class="display-4">Welcome ${pageContext.request.userPrincipal.name} | <a class="display-4"
+                                                                                     onclick="document.forms['logoutForm'].submit()">Logout</a>
         </h3>
-<%-- toDo переделать pageContext на c:out (везде где выводится текст) во всех jsp--%>
+        <%-- toDo переделать pageContext на c:out (везде где выводится текст) во всех jsp--%>
     </c:if>
 
 </div>
@@ -48,7 +49,7 @@
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped" id="datatable">
-        <thead >
+        <thead>
         <tr>
             <th><c:out value="name"/></th>
             <th><c:out value="description"/></th>
@@ -57,18 +58,30 @@
             <th><c:out value="sharing"/></th>
             <th><c:out value="update"/></th>
             <th><c:out value="delete"/></th>
+            <th><c:out value="preview"/></th>
         </tr>
         </thead>
         <c:forEach items="${documents}" var="document">
-<%--            <jsp:useBean id="document" scope="page" type="org.zhezlov.documentarchive.model.Document"/>--%>
+            <%--            <jsp:useBean id="document" scope="page" type="org.zhezlov.documentarchive.model.Document"/>--%>
             <tr>
-                <td>${document.name} </td>
+                <td><a href="documents/downloading?id=${document.id}">${document.name}</a></td>
                 <td>${document.description}</td>
                 <td>${document.authorId}</td>
                 <td>${document.dateTimeCreated}</td>
-                <td><a href="documents/sharing?id=${document.id}">sharing</a></td>
-                <td><a href="documents/update?id=${document.id}">update</a></td>
-                <td><a href="documents/delete?id=${document.id}">delete</a></td>
+                <td><a href="documents/sharing?id=${document.id}"><c:out value="sharing"/></a></td>
+                <td><a href="documents/update?id=${document.id}"><c:out value="update"/></a></td>
+                <td><a href="documents/delete?id=${document.id}"><c:out value="delete"/></a></td>
+                <td>
+                    <c:choose>
+                        <c:when test="${document.isCanPreview()}">
+                            <a href="preview?id=${document.id}"><c:out value="preview"/></a>
+                        </c:when>
+                        <c:otherwise>
+                            <c:out value="not available" />
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                    <%--                <td><a href="preview?id=${document.id}"><c:out value="preview"/></a></td>--%>
             </tr>
         </c:forEach>
     </table>

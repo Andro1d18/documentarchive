@@ -15,6 +15,7 @@
         <intercept-url pattern="/welcome" access="hasAnyAuthority('USER', 'ADMIN')"/>
         <intercept-url pattern="/admin" access="hasAuthority('ADMIN')"/>
         <intercept-url pattern="/documents/**" access="hasAnyAuthority('USER','ADMIN')"/>
+        <intercept-url pattern="/files/**" access="hasAnyAuthority('USER','ADMIN')"/>
 
         <form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error"
                     username-parameter="username" password-parameter="password"/>

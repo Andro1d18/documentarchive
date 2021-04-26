@@ -1,6 +1,6 @@
 package org.zhezlov.documentarchive.service;
 
-import org.zhezlov.documentarchive.dao.UserRepository;
+import org.zhezlov.documentarchive.repository.UserRepository;
 import org.zhezlov.documentarchive.model.Role;
 import org.zhezlov.documentarchive.model.User;
 import org.springframework.beans.factory.annotation.Autowired;

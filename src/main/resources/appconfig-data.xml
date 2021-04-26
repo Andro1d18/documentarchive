@@ -39,5 +39,5 @@
 
     <tx:annotation-driven/>
 
-    <jpa:repositories base-package="org.zhezlov.documentarchive.dao"/>
+    <jpa:repositories base-package="org.zhezlov.documentarchive.repository"/>
 </beans>

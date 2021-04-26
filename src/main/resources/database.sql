@@ -29,7 +29,6 @@ CREATE TABLE documents
     id          INT                     NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(255)            NOT NULL,
     description VARCHAR(255)            NOT NULL,
-    key         VARCHAR(255)            NOT NULL,
     author      INT                     NOT NULL,
     created     TIMESTAMP DEFAULT now() NOT NULL,
     FOREIGN KEY (author) REFERENCES users (id)
@@ -55,12 +54,12 @@ INSERT INTO user_roles
 VALUES (1, 'ADMIN'),
        (2, 'USER');
 
-INSERT INTO documents (name, description, key, author, created)
-VALUES ('файл.doc', 'пример устаревшего MS word', '9d83393e-8086-415f-b832-15f0ba38f5fe', 1, '2020-11-01 14:30:00'),
-       ('рецепты.pdf', 'рецепты в pdf', '56eb7f17-8028-4a6f-ac99-ded1fa4a16ea', 1, '2021-02-01 8:30:00'),
-       ('список.txt', 'Список покупок', '449c4d25-d149-49c4-ae4c-870c1c940e24', 1, '2019-11-01 22:30:00'),
-       ('films.txt', 'Мои любимые фильмы', '3efd25fb-7582-45f5-8d5f-f54e08bcda1a', 2, '2002-11-01 14:30:00'),
-       ('List.xls', 'Штатное рассписание', '1d05df03-79d6-43a5-9feb-1cde7342082a', 2, '2017-09-01 10:30:00');
+INSERT INTO documents (name, description, author, created)
+VALUES ('Жезлов Андрей (1).pdf', 'Резюме', 1, '2020-11-01 14:30:00'),
+       ('Spring_in_Action_5th_Edition.pdf', 'Книга',  1, '2021-02-01 8:30:00'),
+       ('SpringSecurityApp-master.zip', 'Архив',  1, '2019-11-01 22:30:00'),
+       ('error.log', 'Лог ошибки', 2, '2002-11-01 14:30:00'),
+       ('doc-Прилож1-ЗАЯВЛЕНИЕ+О+ДОСТАВКЕ+ПЕНСИИ.docx', 'Штатное рассписание', 2, '2017-09-01 10:30:00');
 
 INSERT INTO documents_grants (id_document, id_user, granted)
 VALUES (1, 1, 1),

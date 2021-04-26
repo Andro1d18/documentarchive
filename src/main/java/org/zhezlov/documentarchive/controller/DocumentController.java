@@ -7,16 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.UriUtils;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.service.DocumentService;
 import org.zhezlov.documentarchive.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 
 @Controller
-@RequestMapping("/documents")
+//@RequestMapping("/documents")
 public class DocumentController {
     public static final Logger LOG = LoggerFactory.getLogger(DocumentService.class);
 
@@ -26,7 +28,7 @@ public class DocumentController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/create")
+    @GetMapping("/documents/create")
     public String create(Model model) {
         LOG.info("forward for create document");
         model.addAttribute("document", new Document());
@@ -34,7 +36,7 @@ public class DocumentController {
     }
 
 
-    @GetMapping("/sharing")
+    @GetMapping("/documents/sharing")
     public String sharing(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
         String id = request.getParameter("id");
         if (id != null) {
@@ -45,7 +47,7 @@ public class DocumentController {
         }
         return "documentSharing";
     }
-    @PostMapping("/sharing")
+    @PostMapping("/documents/sharing")
     public String sharing(@RequestParam("id")String id,
                           @RequestParam(value = "userId", required = false)String userId,
                           @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers) { //toDo вместое реквеста сделать moduleAttribute
@@ -59,14 +61,14 @@ public class DocumentController {
         return "redirect:/welcome";
     }
 
-    @PostMapping("/unsharing")
+    @PostMapping("/documents/unsharing")
     public String sharing(@RequestParam("id")String id) {
         if (id != null) {
             documentService.unsharingForAllUsers(Long.parseLong(id));
         }
         return "redirect:/welcome";
     }
-    @GetMapping("/update")
+    @GetMapping("/documents/update")
     public String update(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
         String id = request.getParameter("id");
         if (id != null) {
@@ -76,7 +78,7 @@ public class DocumentController {
         return "documentUpdateForm";
     }
 
-    @PostMapping("/update")
+    @PostMapping("/documents/update")
     public String update(Model model,     //при update можно только менять Описание. Если нужно загрузить другой файл, нужно удалять предыдущю запись
                          @RequestParam("id") String id,
                          @RequestParam("description") String description) {
@@ -84,7 +86,7 @@ public class DocumentController {
         return "redirect:/welcome";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/documents/create")
     public String create(@RequestParam("description") String description,
                          @RequestParam("file") MultipartFile multipartFile) {
         try {
@@ -97,7 +99,7 @@ public class DocumentController {
         return "redirect:/welcome";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/documents/delete")
     public String delete(HttpServletRequest request) {
         Long id = Long.parseLong(request.getParameter("id"));
         LOG.debug("delete document with id = {}", id);
@@ -107,6 +109,23 @@ public class DocumentController {
             e.printStackTrace(); // toDo переделать на возврат с сообщением об ошибке
         }
         return "redirect:/welcome";
+    }
+
+    @GetMapping("/documents/downloading")
+    public String downloading(HttpServletRequest request, @RequestParam String id){
+
+        String filenameForFS = documentService.getFilenameForFS(Long.parseLong(id));
+        String uriString = UriUtils.encode(filenameForFS, StandardCharsets.UTF_8);
+        return "redirect:/files/" + uriString;
+
+    }
+
+    @GetMapping("/preview")
+    public String preview(@RequestParam("id") String id, Model model) {
+        Long idDoc = Long.parseLong(id);
+        LOG.debug("preview document with id = {}", idDoc);
+        model.addAttribute("filenameForFS", documentService.getFilenameForFS(idDoc));
+        return "previewDocument";
     }
 
 
