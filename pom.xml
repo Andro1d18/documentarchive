@@ -198,7 +198,27 @@
     </dependencies>
     <build>
         <finalName>documentarchive</finalName>
-<!--        <plugins>-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>copy</goal></goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.heroku</groupId>
+                                    <artifactId>webapp-runner</artifactId>
+                                    <version>9.0.41.0</version>
+                                    <destFileName>webapp-runner.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 <!--            <plugin>-->
 <!--                <groupId>org.apache.maven.plugins</groupId>-->
 <!--                <artifactId>maven-enforcer-plugin</artifactId>-->
@@ -209,6 +229,6 @@
 <!--                    </rules>-->
 <!--                </configuration>-->
 <!--            </plugin>-->
-<!--        </plugins>-->
+        </plugins>
     </build>
 </project>
