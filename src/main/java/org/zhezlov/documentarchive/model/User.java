@@ -1,8 +1,6 @@
 package org.zhezlov.documentarchive.model;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -35,8 +33,15 @@ public class User {
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
-    List<Document> documents;
+    public User() {
+    }
+
+    public User(Long id, String username, String password, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;
@@ -78,25 +83,12 @@ public class User {
         this.roles = roles;
     }
 
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id.equals(user.id) &&
-                username.equals(user.username) &&
-                password.equals(user.password) &&
-                Objects.equals(confirmPassword, user.confirmPassword) &&
-                roles.equals(user.roles) &&
-                Objects.equals(documents, user.documents);
+        return id != null && id.equals(user.id) ;
     }
 
     @Override

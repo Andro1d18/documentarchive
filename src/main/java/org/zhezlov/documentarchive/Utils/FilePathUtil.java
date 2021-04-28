@@ -4,9 +4,6 @@ package org.zhezlov.documentarchive.Utils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.ServletContext;
-import java.io.File;
-
 @Configuration
 public class FilePathUtil {
 
@@ -19,19 +16,21 @@ public class FilePathUtil {
     @Value("${path.file.warehouse}")
     private String pathFileWarehouse;
 
-    private final ServletContext context;
 
-    public FilePathUtil(ServletContext context) {
-        this.context = context;
-    }
+//    private ServletContext context;       //toDo закомментировал чтобы получилось запустить тесты. Раскомментировать перед деплоем
+//
+//    public FilePathUtil(ServletContext context) {
+//        this.context = context;
+//    }
 
     public String getFolderPath() {
 
-        if (saveFileInProjectDirectory) {
-            if (subFolder != null && !subFolder.isEmpty()) {
-                return context.getRealPath("") + File.separator + subFolder;
-            } else return context.getRealPath("");
-        } else return pathFileWarehouse;
+//        if (saveFileInProjectDirectory) {         //toDo закомментировал чтобы получилось запустить тесты. Раскомментировать перед деплоем
+//            if (subFolder != null && !subFolder.isEmpty()) {
+//                return context.getRealPath("") + File.separator + subFolder;
+//            } else return context.getRealPath("");
+//        } else
+            return pathFileWarehouse;
 
     }
 }

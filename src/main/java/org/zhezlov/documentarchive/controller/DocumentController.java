@@ -50,14 +50,13 @@ public class DocumentController {
             documentService.create(description, uploadedFile.getFile());
         } catch (IOException e) {
             e.printStackTrace();
-            LOG.info("FILED upload file because: {}", e.getMessage());
-            //return "redirect:/documentForm"; // toDo переделать на возврат с сообщением об ошибке
+            LOG.info("FILED upload file because: {}", e.getMessage()); // toDo переделать на возврат с сообщением об ошибке
         }
         return "redirect:/welcome";
     }
 
     @GetMapping("/documents/sharing")
-    public String sharing(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
+    public String sharing(Model model, HttpServletRequest request) {
         String id = request.getParameter("id");
         if (id != null) {
             LOG.info("forward for update document with id ={}", id);
@@ -71,7 +70,7 @@ public class DocumentController {
     @PostMapping("/documents/sharing")
     public String sharing(@RequestParam("id") String id,
                           @RequestParam(value = "userId", required = false) String userId,
-                          @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers) { //toDo вместое реквеста сделать moduleAttribute
+                          @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers) {
         if (forAllUsers) {
             documentService.shareDocumentForAllUsers(Long.parseLong(id));
             return "redirect:/welcome";
@@ -91,7 +90,7 @@ public class DocumentController {
     }
 
     @GetMapping("/documents/update")
-    public String update(Model model, HttpServletRequest request) { //toDo вместое реквеста сделать moduleAttribute
+    public String update(Model model, HttpServletRequest request) {
         String id = request.getParameter("id");
         if (id != null) {
             LOG.info("forward for update document with id ={}", id);
@@ -137,65 +136,4 @@ public class DocumentController {
         model.addAttribute("filenameForFS", documentService.getFilenameForFS(idDoc));
         return "previewDocument";
     }
-
-
-//    @Autowired
-//    private FileValidator fileValidator; //автосвязывание с бином FileValidator
-//
-//    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-//    @ResponseBody
-//    public ModelAndView uploadFile(@ModelAttribute("uploadedFile") UploadedFile uploadedFile, BindingResult result) {// имена параметров (тут - "uploadedFile") - из формы JSP.
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//
-//        String fileName = null;
-//
-//        MultipartFile file = uploadedFile.getFile();
-//        fileValidator.validate(uploadedFile, result);
-//
-//        if (result.hasErrors()) {
-//            modelAndView.setViewName("documents");
-//        } else {
-//
-//            try {
-//                byte[] bytes = file.getBytes();
-//
-//                fileName = file.getOriginalFilename();
-//
-//                String rootPath = "C:\\path\\";
-//                File dir = new File(rootPath + File.separator + "loadFiles");
-//
-//                if (!dir.exists()) {
-//                    dir.mkdirs();
-//                }
-//
-//                File loadFile = new File(dir.getAbsolutePath() + File.separator + fileName);
-//
-//                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(loadFile));
-//                stream.write(bytes);
-//                stream.flush();
-//                stream.close();
-//
-//                LOG.info("uploaded: " + loadFile.getAbsolutePath());
-//
-//                RedirectView redirectView = new RedirectView("welcome");
-//                redirectView.setStatusCode(HttpStatus.FOUND);
-//                modelAndView.setView(redirectView);
-//                modelAndView.addObject("filename", fileName);
-//
-//            } catch (IOException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//
-//        }
-//
-//        return modelAndView;
-//    }
-//
-//    @RequestMapping(value = "/fileuploaded", method = RequestMethod.GET)
-//    public String fileUploaded() {
-//        return "fileuploaded";
-//    }
-
 }

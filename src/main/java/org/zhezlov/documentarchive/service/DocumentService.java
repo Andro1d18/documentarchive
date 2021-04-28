@@ -54,6 +54,15 @@ public class DocumentService {
 
     }
 
+    public List<Document> getAll(Long userId) {             //for test
+        User user = userRepository.getOne(userId);
+        if (user != null) {
+            return documentRepository.getAllwithAnyGrants(user.getId());
+        }
+        return Collections.emptyList();
+
+    }
+
     public List<Document> getAllwithAuthorId() {    //return document only logged user = authorId
         String username = getUsername();
         User user = userRepository.findByUsername(username);

@@ -44,7 +44,7 @@
 
 </div>
 <div>
-    <h3><a href="documents/create">Add document</a></h3>
+    <h3><a href="documents/create"><c:out value="Add document"/></a></h3>
 </div>
 
 <div class="table-responsive">

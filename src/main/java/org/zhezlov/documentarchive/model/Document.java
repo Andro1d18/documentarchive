@@ -28,15 +28,16 @@ public class Document {
     @Column(name = "author")
     private Long authorId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "author", insertable = false, updatable = false)
-    private User author;
-
     @Column(name = "created")
     @NotNull
     private Timestamp dateTimeCreated;
 
 
+
+    public Document(Long id, String name, String description, Timestamp dateTimeCreated, Long authorId) {
+        this(name, description, dateTimeCreated, authorId);
+        this.id = id;
+    }
 
     public Document(String name, String description, Timestamp dateTimeCreated, Long authorId) {
         this.name = name;

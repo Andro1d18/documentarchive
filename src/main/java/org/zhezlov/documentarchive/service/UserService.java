@@ -29,14 +29,17 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public void save(User user) {
+    public User save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<>();
         roles.add(Role.USER);
         user.setRoles(roles);
-        userRepository.save(user);
+        return userRepository.save(user) ;
     }
 
+    public User getUser(User user){
+        return userRepository.findById(user.getId()).orElse(new User());
+    }
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);

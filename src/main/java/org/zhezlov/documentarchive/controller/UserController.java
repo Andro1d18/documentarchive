@@ -45,11 +45,19 @@ public class UserController {
             return "registration";
         }
 
-        userService.save(userForm); //toDo обработать ситуацию, когда первый сработает, а securityService не сработает (проверить сохранилось ли и затем залогинить)
+        User savedUser = userService.save(userForm);
+        User getUser = userService.getUser(savedUser);
+
+        if (!savedUser.equals(getUser)) {
+            bindingResult.rejectValue("username", "We have problem with create new user. We have already started solving. Please try again later.");
+            return "registration";
+        }
 
         securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
         LOG.debug("registration complete, redirect to welcome.jsp");
         return "redirect:/welcome";
+
+
     }
 
     @GetMapping(value = "/login")
