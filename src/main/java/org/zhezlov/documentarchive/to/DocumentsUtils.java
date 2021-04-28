@@ -3,11 +3,15 @@ package org.zhezlov.documentarchive.to;
 
 import org.zhezlov.documentarchive.model.Document;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class DocumentsUtils {
+
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy, HH:mm");
 
     public static final String[] EXTENSION_FOR_PREVIEW = {"pdf","odt", "odp", "ods"};
 
@@ -37,7 +41,11 @@ public class DocumentsUtils {
                 document.getName(),
                 document.getDescription(),
                 document.getAuthorId(),
+                document.getAuthorName(),
                 document.getDateTimeCreated(),
                 canPreview);
+    }
+    public static String toString(LocalDateTime ldt) {
+        return ldt == null ? "" : ldt.format(DATE_TIME_FORMATTER);
     }
 }

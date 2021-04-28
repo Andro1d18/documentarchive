@@ -20,8 +20,7 @@ import org.zhezlov.documentarchive.to.DocumentsUtils;
 import org.zhezlov.documentarchive.validator.FileValidator;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -83,7 +82,7 @@ public class DocumentService {
     public void create(String description, MultipartFile multipartFile) throws IOException { //ToDo если останется время, сделай через темп файлы (вначале создание в темп директории, затем создание в моделе, затем перенос в место дислокаци)
         if (multipartFile != null) {
             String fileName = multipartFile.getOriginalFilename();
-            Document document = new Document(fileName, description, Timestamp.from(Instant.now()), getLoggedUser().getId());
+            Document document = new Document(fileName, description, LocalDateTime.now(), getLoggedUser().getId(), getLoggedUser().getUsername());
             Document createdDocument = documentRepository.save(document);
             documentRepository.sharingDocumentForOneUser(createdDocument.getId(), getLoggedUser().getId());  //ToDo переделать если останется время - нужно создать свою имплементацию Repositories, а внутри юзать JpaRepository
             String filenameForFS = getFilenameForFS(createdDocument);

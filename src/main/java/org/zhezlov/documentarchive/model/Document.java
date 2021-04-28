@@ -5,7 +5,7 @@ import org.hibernate.annotations.Proxy;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -28,33 +28,37 @@ public class Document {
     @Column(name = "author")
     private Long authorId;
 
+    @Column(name = "authorName")
+    private String authorName;
+
     @Column(name = "created")
     @NotNull
-    private Timestamp dateTimeCreated;
+    private LocalDateTime dateTimeCreated;
 
 
 
-    public Document(Long id, String name, String description, Timestamp dateTimeCreated, Long authorId) {
-        this(name, description, dateTimeCreated, authorId);
+    public Document(Long id, String name, String description, LocalDateTime dateTimeCreated, Long authorId, String authorName) {
+        this(name, description, dateTimeCreated, authorId, authorName);
         this.id = id;
     }
 
-    public Document(String name, String description, Timestamp dateTimeCreated, Long authorId) {
+    public Document(String name, String description, LocalDateTime dateTimeCreated, Long authorId, String authorName) {
         this.name = name;
         this.description = description;
         this.dateTimeCreated = dateTimeCreated;
         this.authorId = authorId;
+        this.authorName = authorName;
     }
 
     public Document() {
 
     }
 
-    public Timestamp getDateTimeCreated() {
+    public LocalDateTime getDateTimeCreated() {
         return dateTimeCreated;
     }
 
-    public void setDateTimeCreated(Timestamp dateTimeCreated) {
+    public void setDateTimeCreated(LocalDateTime dateTimeCreated) {
         this.dateTimeCreated = dateTimeCreated;
     }
 
@@ -92,6 +96,14 @@ public class Document {
 
     public boolean isNew(){
         return id == null;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
 }

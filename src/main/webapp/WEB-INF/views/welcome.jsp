@@ -1,6 +1,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://topjava.javawebinar.ru/functions" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -63,8 +64,8 @@
             <tr>
                 <td><a href="documents/downloading?id=${document.id}">${document.name}</a></td>
                 <td><c:out value="${document.description}"/></td>
-                <td><c:out value="${document.authorId}"/></td>
-                <td><c:out value="${document.dateTimeCreated}"/></td>
+                <td><c:out value="${document.authorName}"/></td>
+                <td><c:out value=" ${fn:formatDateTime(document.dateTimeCreated)}"/></td>
                 <td><a href="documents/sharing?id=${document.id}"><c:out value="sharing"/></a></td>
                 <td><a href="documents/update?id=${document.id}"><c:out value="update"/></a></td>
                 <td><a href="documents/delete?id=${document.id}"><c:out value="delete"/></a></td>

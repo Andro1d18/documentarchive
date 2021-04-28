@@ -30,6 +30,7 @@ CREATE TABLE documents
     name        VARCHAR(255)            NOT NULL,
     description VARCHAR(255)            NOT NULL,
     author      INT                     NOT NULL,
+    authorName  VARCHAR(255)            NOT NULL,
     created     TIMESTAMP DEFAULT now() NOT NULL,
     FOREIGN KEY (author) REFERENCES users (id)
 );

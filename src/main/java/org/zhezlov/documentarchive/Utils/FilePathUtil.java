@@ -13,7 +13,7 @@ public class FilePathUtil {
     @Value("${save.file.in.project.directory}")
     private boolean saveFileInProjectDirectory;
 
-    @Value("${save.file.in.project.subFolder.name}")
+    @Value("${subFolder.for.save}")
     private String subFolder;
 
     @Value("${path.file.warehouse}")
