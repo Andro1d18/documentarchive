@@ -11,7 +11,8 @@
     <!-- use WebJars so Javascript and CSS libs can be declared as Maven dependencies (Bootstrap, jQuery...) -->
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
-    <mvc:resources mapping="/files/**" location="file:${path.file.warehouse}\\" /> <!--todo before deploy replace path to classpath-->
+<!--    <mvc:resources mapping="/files/**" location="file:${path.file.warehouse}\\" /> &lt;!&ndash;todo before deploy replace path to classpath&ndash;&gt;-->
+    <mvc:resources mapping="/files/**" location="/loadFile/" /> <!--todo before deploy replace path to classpath-->
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">
