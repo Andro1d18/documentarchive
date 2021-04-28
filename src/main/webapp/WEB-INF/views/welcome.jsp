@@ -36,10 +36,8 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h3 class="display-4">Welcome ${pageContext.request.userPrincipal.name} | <a class="display-4"
-                                                                                     onclick="document.forms['logoutForm'].submit()">Logout</a>
+        <h3 class="display-4"><c:out value="Welcome ${pageContext.request.userPrincipal.name}"/> | <a class="display-4" onclick="document.forms['logoutForm'].submit()"><c:out value="Logout"/></a>
         </h3>
-        <%-- toDo переделать pageContext на c:out (везде где выводится текст) во всех jsp--%>
     </c:if>
 
 </div>
@@ -62,12 +60,11 @@
         </tr>
         </thead>
         <c:forEach items="${documents}" var="document">
-            <%--            <jsp:useBean id="document" scope="page" type="org.zhezlov.documentarchive.model.Document"/>--%>
             <tr>
                 <td><a href="documents/downloading?id=${document.id}">${document.name}</a></td>
-                <td>${document.description}</td>
-                <td>${document.authorId}</td>
-                <td>${document.dateTimeCreated}</td>
+                <td><c:out value="${document.description}"/></td>
+                <td><c:out value="${document.authorId}"/></td>
+                <td><c:out value="${document.dateTimeCreated}"/></td>
                 <td><a href="documents/sharing?id=${document.id}"><c:out value="sharing"/></a></td>
                 <td><a href="documents/update?id=${document.id}"><c:out value="update"/></a></td>
                 <td><a href="documents/delete?id=${document.id}"><c:out value="delete"/></a></td>
@@ -81,7 +78,6 @@
                         </c:otherwise>
                     </c:choose>
                 </td>
-                    <%--                <td><a href="preview?id=${document.id}"><c:out value="preview"/></a></td>--%>
             </tr>
         </c:forEach>
     </table>

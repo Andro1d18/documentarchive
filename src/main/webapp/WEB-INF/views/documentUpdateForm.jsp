@@ -18,7 +18,7 @@
 <%--    <meta name="author" content="">--%>
     <base href="${pageContext.request.contextPath}/"/>
 
-    <title>Document update</title>
+    <title><c:out value="Document update"/></title>
 
     <link rel="stylesheet" href=${pageContext.request.contextPath}/resources/css/style.css?v=2">
     <link rel="stylesheet" href="webjars/bootstrap/4.6.0-1/css/bootstrap.min.css">
@@ -40,7 +40,7 @@
         <input type="hidden" name="id" value="${document.id}">
 
         <dl>
-            <dt>Description:</dt>
+            <dt><c:out value="Description:"/></dt>
             <dd><input type="text" value="${document.description}" size=40 name="description" required></dd>
         </dl>
 

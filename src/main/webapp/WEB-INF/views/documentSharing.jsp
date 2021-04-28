@@ -14,7 +14,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <base href="${pageContext.request.contextPath}/"/>
 
-    <title>Sharing document </title>
+    <title><c:out value="Sharing document "/></title>
 
     <link rel="stylesheet" href=${pageContext.request.contextPath}/resources/css/style.css?v=2">
     <link rel="stylesheet" href="webjars/bootstrap/4.6.0-1/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
 </head>
 <body>
 <div>
-    <h2> Sharing document ${document.name}</h2>
+    <h2><c:out value=" Sharing document ${document.name}"/></h2>
 </div>
 
 <div>
@@ -44,7 +44,6 @@
                 <div class="col-md-1"><c:out value="for all users"/></div>
                 <div class="col-md-1"><input type="checkbox" name="forAllUsers" value="true" id="idChk"
                                              onclick="myFunction()"></div>
-                <%--                <div  class="col-md-1">Customer Address</div>--%>
             </div>
             <div class="row">
                 <div class="col-md-1"><c:out value="or one user"/></div>
@@ -52,22 +51,11 @@
                     <select name="userId" id="myOption">
                         <c:forEach var="item" items="${users}">
                             <c:if test="${item.username != loggedUser}">
-                                <option value="${item.id}">${item.username}</option>
+                                <option value="${item.id}"><c:out value="${item.username}"/></option>
                             </c:if>
                         </c:forEach>
                     </select>
                 </div>
-                <%--                <div class="col-md-1">003</div>--%>
-            </div>
-            <div class="row">
-                <%--                <div class="col-md-1">xxx</div>--%>
-                <%--                <div class="col-md-1">yyy</div>--%>
-                <%--                <div class="col-md-1">www</div>--%>
-            </div>
-            <div class="row">
-                <%--                <div class="col-md-1">ttt</div>--%>
-                <%--                <div class="col-md-1">uuu</div>--%>
-                <%--                <div class="col-md-1">Mkkk</div>--%>
             </div>
         </div>
         <button type="submit"><c:out value="Enable sharing"/></button>

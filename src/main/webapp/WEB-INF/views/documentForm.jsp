@@ -38,13 +38,13 @@
     <form:form method="post" action="documents/create" class="form-control-static" enctype="multipart/form-data" modelAttribute="uploadedFile">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <dl>
-            <dt>Description:</dt>
+            <dt><c:out value="Description:"/></dt>
             <dd><input type="text" value="${document.description}" size=40 name="description" required></dd>
             <dd style="color: red; font-style: italic;">
                 <form:errors path="description" /></dd>
         </dl>
             <dl>
-                <dt>File upload:</dt>
+                <dt><c:out value="File upload:"/></dt>
                 <dd><input type="file" name="file" required></dd>
                 <dd style="color: red; font-style: italic;">
                     <form:errors path="file" /></dd>

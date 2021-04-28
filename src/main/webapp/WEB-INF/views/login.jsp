@@ -15,7 +15,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Log in with your account</title>
+    <title><c:out value="Log in with your account"/></title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 <div class="container">
 
     <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Log in</h2>
+        <h2 class="form-heading"><c:out value="Log in"/></h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>

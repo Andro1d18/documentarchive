@@ -1,9 +1,9 @@
 package org.zhezlov.documentarchive.model;
 
 import org.hibernate.annotations.Proxy;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
@@ -18,11 +18,11 @@ public class Document {
     private Long id;
 
     @Column(name = "name")
-    @NotBlank
+    @NotEmpty
     private String name;
 
     @Column(name = "description")
-    @NotBlank
+    @NotEmpty
     private String description;
 
     @Column(name = "author")
