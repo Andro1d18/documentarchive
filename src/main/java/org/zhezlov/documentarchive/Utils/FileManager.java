@@ -11,6 +11,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 
 @Component
@@ -35,6 +36,10 @@ public class FileManager {
             stream.flush();
         }
         LOG.info("uploaded: " + loadFile.getAbsolutePath());
+        for (File file :
+                dir.listFiles()) {
+            LOG.info("folder has file: {}", file.getAbsolutePath());
+        }
     }
 
     public void delete(String realFilename) throws IOException {
