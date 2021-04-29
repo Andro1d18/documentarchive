@@ -37,7 +37,9 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h3 class="display-4"><c:out value="Welcome ${pageContext.request.userPrincipal.name}"/> | <a class="display-4" onclick="document.forms['logoutForm'].submit()"><c:out value="Logout"/></a>
+        <h3 class="display-4"><c:out value="Welcome ${pageContext.request.userPrincipal.name}"/> | <a class="display-4"
+                                                                                                      onclick="document.forms['logoutForm'].submit()"><c:out
+                value="Logout"/></a>
         </h3>
     </c:if>
 
@@ -66,16 +68,43 @@
                 <td><c:out value="${document.description}"/></td>
                 <td><c:out value="${document.authorName}"/></td>
                 <td><c:out value=" ${fn:formatDateTime(document.dateTimeCreated)}"/></td>
-                <td><a href="documents/sharing?id=${document.id}"><c:out value="sharing"/></a></td>
-                <td><a href="documents/update?id=${document.id}"><c:out value="update"/></a></td>
-                <td><a href="documents/delete?id=${document.id}"><c:out value="delete"/></a></td>
+                <td>
+                    <c:choose>
+                        <c:when test="${document.isCanSharing()}">
+                            <a href="documents/sharing?id=${document.id}"><c:out value="sharing"/></a>
+                        </c:when>
+                        <c:otherwise>
+                            <c:out value="access denied"/>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                <td>
+                    <c:choose>
+                        <c:when test="${document.isCanUpdate()}">
+                            <a href="documents/update?id=${document.id}"><c:out value="update"/></a>
+                        </c:when>
+                        <c:otherwise>
+                            <c:out value="access denied"/>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                <td>
+                    <c:choose>
+                        <c:when test="${document.isCanDelete()}">
+                            <a href="documents/delete?id=${document.id}"><c:out value="delete"/></a>
+                        </c:when>
+                        <c:otherwise>
+                            <c:out value="access denied"/>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
                 <td>
                     <c:choose>
                         <c:when test="${document.isCanPreview()}">
                             <a href="preview?id=${document.id}"><c:out value="preview"/></a>
                         </c:when>
                         <c:otherwise>
-                            <c:out value="not available" />
+                            <c:out value="not available"/>
                         </c:otherwise>
                     </c:choose>
                 </td>

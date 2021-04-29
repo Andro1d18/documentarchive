@@ -44,10 +44,10 @@ public class DocumentService {
     FileValidator fileValidator;
 
     public List<DocumentTo> getAll() {             //return all document with everything grants
-        User user = userRepository.findByUsername(getLoggedUser().getUsername());
-        if (user != null) {
+        User loggedUser = userRepository.findByUsername(getLoggedUser().getUsername());
+        if (loggedUser != null) {
 
-            return DocumentsUtils.getTos(documentRepository.getAllwithAnyGrants(user.getId()));
+            return DocumentsUtils.getTos(documentRepository.getAllwithAnyGrants(loggedUser.getId()), loggedUser.getId());
         }
         return Collections.emptyList();
 
@@ -106,8 +106,10 @@ public class DocumentService {
 
     public void update(Long id, String description) {
         Document document = get(id);
-        document.setDescription(description);
-        documentRepository.save(document);
+        if (document.getAuthorId().equals(getLoggedUser().getId())) {
+            document.setDescription(description);
+            documentRepository.save(document);
+        }
     }
 
     public void delete(Long id) throws IOException {
@@ -143,4 +145,17 @@ public class DocumentService {
     public void validateFile(UploadedFile uploadFile, BindingResult bindingResult){
         fileValidator.validate(uploadFile, bindingResult);
     }
+
+    public boolean userHasRight(Long docId){
+        return get(docId).getAuthorId().equals(getLoggedUser().getId());
+    }
+
+    public boolean userHasRightForPreview(Long docId) {
+        return userHasRightForDownloadnig(docId);
+    }
+
+    public boolean userHasRightForDownloadnig(Long docId) {
+        return documentRepository.checkRightDownloading(docId, getLoggedUser().getId()) > 0;
+    }
+
 }

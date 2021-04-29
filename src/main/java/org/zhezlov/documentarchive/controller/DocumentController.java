@@ -58,19 +58,27 @@ public class DocumentController {
     @GetMapping("/documents/sharing")
     public String sharing(Model model, HttpServletRequest request) {
         String id = request.getParameter("id");
-        if (id != null) {
-            LOG.info("forward for update document with id ={}", id);
-            model.addAttribute("document", documentService.get(Long.parseLong(id)));
-            model.addAttribute("users", userService.findAll());
-            model.addAttribute("loggedUser", userService.getNameLoggedUser());
-        }
+
+        if (!documentService.userHasRight(Long.parseLong(id)))
+            return "redirect:/welcome";
+
+        LOG.info("forward for update document with id ={}", id);
+        model.addAttribute("document", documentService.get(Long.parseLong(id)));
+        model.addAttribute("users", userService.findAll());
+        model.addAttribute("loggedUser", userService.getNameLoggedUser());
+
         return "documentSharing";
     }
+
 
     @PostMapping("/documents/sharing")
     public String sharing(@RequestParam("id") String id,
                           @RequestParam(value = "userId", required = false) String userId,
                           @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers) {
+
+        if (!documentService.userHasRight(Long.parseLong(id)))
+            return "redirect:/welcome";
+
         if (forAllUsers) {
             documentService.shareDocumentForAllUsers(Long.parseLong(id));
             return "redirect:/welcome";
@@ -81,17 +89,22 @@ public class DocumentController {
         return "redirect:/welcome";
     }
 
+
     @PostMapping("/documents/unsharing")
     public String sharing(@RequestParam("id") String id) {
-        if (id != null) {
-            documentService.unsharingForAllUsers(Long.parseLong(id));
-        }
+        if (!documentService.userHasRight(Long.parseLong(id)))
+            return "redirect:/welcome";
+
+        documentService.unsharingForAllUsers(Long.parseLong(id));
+
         return "redirect:/welcome";
     }
 
     @GetMapping("/documents/update")
-    public String update(Model model, HttpServletRequest request) {
+    public String update(Model model, HttpServletRequest request) {  //ОСТАНОВИЛСЯ ТУТ - доделай во все контроллеры проверку на имеет ли права пользователь на такие действия
         String id = request.getParameter("id");
+        if (!documentService.userHasRight(Long.parseLong(id)))
+            return "redirect:/welcome";
         if (id != null) {
             LOG.info("forward for update document with id ={}", id);
             model.addAttribute("document", documentService.get(Long.parseLong(id)));
@@ -103,6 +116,8 @@ public class DocumentController {
     public String update(Model model,     //при update можно только менять Описание. Если нужно загрузить другой файл, нужно удалять предыдущю запись
                          @RequestParam("id") String id,
                          @RequestParam("description") String description) {
+        if (!documentService.userHasRight(Long.parseLong(id)))
+            return "redirect:/welcome";
         documentService.update(Long.parseLong(id), description);
         return "redirect:/welcome";
     }
@@ -111,6 +126,9 @@ public class DocumentController {
     @GetMapping("/documents/delete")
     public String delete(HttpServletRequest request) {
         Long id = Long.parseLong(request.getParameter("id"));
+
+        if (!documentService.userHasRight(id))
+            return "redirect:/welcome";
         LOG.debug("delete document with id = {}", id);
         try {
             documentService.delete(id);
@@ -123,6 +141,8 @@ public class DocumentController {
     @GetMapping("/documents/downloading")
     public String downloading(HttpServletRequest request, @RequestParam String id) {
 
+        if (!documentService.userHasRightForDownloadnig(Long.parseLong(id)))
+            return "redirect:/welcome";
         String filenameForFS = documentService.getFilenameForFS(Long.parseLong(id));
         String uriString = UriUtils.encode(filenameForFS, StandardCharsets.UTF_8);
         return "redirect:/files/" + uriString;
@@ -131,9 +151,16 @@ public class DocumentController {
 
     @GetMapping("/preview")
     public String preview(@RequestParam("id") String id, Model model) {
+        if (!documentService.userHasRightForPreview(Long.parseLong(id)))
+            return "redirect:/welcome";
         Long idDoc = Long.parseLong(id);
         LOG.debug("preview document with id = {}", idDoc);
         model.addAttribute("filenameForFS", documentService.getFilenameForFS(idDoc));
         return "previewDocument";
+    }
+
+    @GetMapping("/cancel")
+    public String cancel(){
+        return "redirect:/welcome";
     }
 }

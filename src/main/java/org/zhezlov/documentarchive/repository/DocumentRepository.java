@@ -29,4 +29,8 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
     void unsharingDocumentForOneUser(@Param("docId") Long docId,
                                   @Param("userId") Long userId);
 
+    @Transactional
+    @Query(value = "select count(*) from DOCUMENTS_GRANTS where ID_DOCUMENT= :docId and ID_USER= :userId",nativeQuery = true)
+    int checkRightDownloading(@Param("docId") Long docId,
+                              @Param("userId")Long userId);
 }

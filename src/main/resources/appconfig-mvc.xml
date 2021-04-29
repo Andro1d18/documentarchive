@@ -11,9 +11,8 @@
     <!-- use WebJars so Javascript and CSS libs can be declared as Maven dependencies (Bootstrap, jQuery...) -->
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
-<!--    <mvc:resources mapping="/files/**" location="file:${path.file.warehouse}\\" /> &lt;!&ndash;for file warehouse in any directory;&gt;-->
-<!--    <mvc:resources mapping="/files/**" location="/loadFile/" /> &lt;!&ndash;&ndash;&gt;-->
-    <mvc:resources mapping="/files/**" location="${path.file.warehouse}" /> <!---->
+    <mvc:resources mapping="/files/**" location="file:${path.file.warehouse}\\" /> <!--for file warehouse in any directory-->
+<!--    <mvc:resources mapping="/files/**" location="/loadFile/" /> &lt;!&ndash; for file in project folder &ndash;&gt;-->
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">

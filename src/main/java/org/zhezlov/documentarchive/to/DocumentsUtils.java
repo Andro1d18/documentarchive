@@ -18,15 +18,28 @@ public class DocumentsUtils {
 
     public DocumentsUtils(){}
 
-    public static List<DocumentTo> getTos(List<Document> documents){
+    public static List<DocumentTo> getTos(List<Document> documents, Long loggedUserId){
 
         return documents.stream()
-                .map(document -> createDocumentTo(document, canPreview(document)))
+                .map(document -> createDocumentTo(document,
+                        canPreview(document),
+                        canSharing(document.getAuthorId(), loggedUserId),
+                        canUpdate(document.getAuthorId(),loggedUserId),
+                        canDelete(document.getAuthorId(),loggedUserId)))
                 .collect(Collectors.toList());
     }
 
     public static boolean canPreview(Document document){
         return Arrays.asList(EXTENSION_FOR_PREVIEW).contains(getExtension(document.getName()));
+    }
+    public static boolean canSharing(Long authorId, Long loggedUserId){
+        return canUpdate(authorId, loggedUserId);
+    }
+    public static boolean canUpdate(Long authorId, Long loggedUserId){
+        return canDelete(authorId, loggedUserId);
+    }
+    public static boolean canDelete(Long authorId, Long loggedUserId){
+        return authorId.equals(loggedUserId);
     }
 
     public static String getExtension(String fileName){
@@ -36,14 +49,17 @@ public class DocumentsUtils {
         return "";
     }
 
-    public static DocumentTo createDocumentTo(Document document, boolean canPreview){
+    public static DocumentTo createDocumentTo(Document document, boolean canPreview, boolean canSharing,boolean canUpdate,boolean canDelete){
         return new DocumentTo(document.getId(),
                 document.getName(),
                 document.getDescription(),
                 document.getAuthorId(),
                 document.getAuthorName(),
                 document.getDateTimeCreated(),
-                canPreview);
+                canPreview,
+                canSharing,
+                canUpdate,
+                canDelete);
     }
     public static String toString(LocalDateTime ldt) {
         return ldt == null ? "" : ldt.format(DATE_TIME_FORMATTER);

@@ -44,9 +44,22 @@
             <dd><input type="text" value="${document.description}" size=40 name="description" required></dd>
         </dl>
 
-        <button type="submit">Save</button>
-        <button onclick="window.history.back()" type="button">Cancel</button>
+<%--        <button type="submit">Save</button>--%>
+        <%--        <button onclick="window.history.back()" type="button">Cancel</button>--%>
+
+    <div class="row">
+        <div>
+            <button class="btn-default btn btn-lg" type="submit">Save</button>
+            <%--        <button onclick="window.history.back()" type="button">Cancel</button>--%>
     </form>
+        </div>
+        <div>
+            <form method="get" action="cancel">
+                <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+                <button style="margin-left: 5px" class="btn btn-default btn-lg"  type="submit">Cancel</button>
+            </form>
+        </div>
+    </div>
 </section>
 </body>
 </html>

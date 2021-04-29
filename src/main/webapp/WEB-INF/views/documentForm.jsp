@@ -35,7 +35,7 @@
     <h3></h3>
     <hr>
     <%--    <form method="post" action="documents/upload?${_csrf.parameterName}=${_csrf.token}" class="form-control-static" enctype="multipart/form-data">--%>
-    <form:form method="post" action="documents/create" class="form-control-static" enctype="multipart/form-data" modelAttribute="uploadedFile">
+    <form:form cssClass="form-group-lg" method="post" action="documents/create" class="form-control-static" enctype="multipart/form-data" modelAttribute="uploadedFile">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <dl>
             <dt><c:out value="Description:"/></dt>
@@ -49,9 +49,19 @@
                 <dd style="color: red; font-style: italic;">
                     <form:errors path="file" /></dd>
             </dl>
-        <button type="submit">Save</button>
-        <button onclick="window.history.back()" type="button">Cancel</button>
-    </form:form>
+       <div class="row">
+           <div>
+               <button class="btn-default btn btn-lg" type="submit">Save</button>
+                   <%--        <button onclick="window.history.back()" type="button">Cancel</button>--%>
+               </form:form>
+           </div>
+           <div>
+               <form method="get" action="cancel">
+                   <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+                   <button style="margin-left: 5px" class="btn btn-default btn-lg"  type="submit">Cancel</button>
+               </form>
+           </div>
+       </div>
 </section>
 </body>
 </html>

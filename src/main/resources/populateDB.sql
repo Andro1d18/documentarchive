@@ -17,12 +17,12 @@ INSERT INTO user_roles
 VALUES (1, 'ADMIN'),
        (2, 'USER');
 
-INSERT INTO documents (name, description, author, created)
-VALUES ('Жезлов Андрей (1).pdf', 'Резюме', 1, '2020-11-01 14:30:00'),
-       ('Spring_in_Action_5th_Edition.pdf', 'Книга',  1, '2021-02-01 8:30:00'),
-       ('SpringSecurityApp-master.zip', 'Архив',  1, '2019-11-01 22:30:00'),
-       ('error.log', 'Лог ошибки', 2, '2002-11-01 14:30:00'),
-       ('doc-Прилож1-ЗАЯВЛЕНИЕ+О+ДОСТАВКЕ+ПЕНСИИ.docx', 'Штатное рассписание', 2, '2017-09-01 10:30:00');
+INSERT INTO documents (name, description, author, AUTHORNAME, created)
+VALUES ('Жезлов Андрей (1).pdf', 'Резюме', 1, 'andro1d1', '2020-11-01 14:30:00'),
+       ('Spring_in_Action_5th_Edition.pdf', 'Книга',  1, 'andro1d1', '2021-02-01 8:30:00'),
+       ('SpringSecurityApp-master.zip', 'Архив',  1, 'andro1d1', '2019-11-01 22:30:00'),
+       ('error.log', 'Лог ошибки', 2, 'user','2002-11-01 14:30:00'),
+       ('doc-Прилож1-ЗАЯВЛЕНИЕ+О+ДОСТАВКЕ+ПЕНСИИ.docx', 'Штатное рассписание', 2, 'user','2017-09-01 10:30:00');
 
 INSERT INTO documents_grants (id_document, id_user, granted)
 VALUES (1, 1, 1),

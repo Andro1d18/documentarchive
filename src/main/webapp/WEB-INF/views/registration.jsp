@@ -54,8 +54,12 @@
         </spring:bind>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-        <button class="btn btn-lg btn-primary btn-block" onclick="window.history.back()" type="button">Cancel</button>
+<%--        <button class="btn btn-lg btn-primary btn-block" onclick="window.history.back()" type="button">Cancel</button>--%>
     </form:form>
+    <form class="form-signin" method="get" action="cancel">
+        <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+        <button class="btn btn-lg btn-primary btn-block"  type="submit">Cancel</button>
+    </form>
 
 </div>
 <!-- /container -->
