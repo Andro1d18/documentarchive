@@ -15,7 +15,7 @@ public class DocumentsUtils {
     public DocumentsUtils(){}
 
     public static List<DocumentTo> getTos(List<Document> documents){
-
+        String s; // for test deploy. This can delete
         return documents.stream()
                 .map(document -> createDocumentTo(document, canPreview(document)))
                 .collect(Collectors.toList());

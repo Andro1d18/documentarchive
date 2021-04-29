@@ -75,6 +75,7 @@ public class DocumentController {
             documentService.shareDocumentForAllUsers(Long.parseLong(id));
             return "redirect:/welcome";
         }
+
         if (userId != null && id != null) {
             documentService.shareDocument(Long.parseLong(id), Long.parseLong(userId));
         }
