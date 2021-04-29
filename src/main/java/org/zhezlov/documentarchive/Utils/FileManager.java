@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 
 @Component
@@ -29,7 +33,10 @@ public class FileManager {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        File loadFile = new File(dir.getAbsolutePath() + File.separator + realFilename);
+        ByteBuffer buffer = StandardCharsets.UTF_8.encode(realFilename);
+        String utf8realFileName = StandardCharsets.UTF_8.decode(buffer).toString();
+
+        File loadFile = new File(dir.getAbsolutePath() + File.separator + utf8realFileName);
 
         try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(loadFile))) {
             stream.write(bytes);
