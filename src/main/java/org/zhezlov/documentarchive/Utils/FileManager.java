@@ -45,7 +45,7 @@ public class FileManager {
         LOG.info("uploaded: " + loadFile.getAbsolutePath());
         for (File file :
                 dir.listFiles()) {
-            LOG.info("folder has file: {}", file.getAbsolutePath());
+            LOG.info("folder has file: {}", file.getAbsolutePath());    //for heroku debug
         }
     }
 

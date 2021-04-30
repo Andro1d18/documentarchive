@@ -19,7 +19,7 @@ public class FilePathUtil {
     @Value("${path.file.warehouse}")
     private String pathFileWarehouse;
 
-    private ServletContext context;       //toDo закомментировал чтобы получилось запустить тесты. Раскомментировать перед деплоем
+    private ServletContext context;       //toDo для тестов замокать FilePathUtil
 
     public FilePathUtil(ServletContext context) {
         this.context = context;
@@ -27,7 +27,7 @@ public class FilePathUtil {
 
     public String getFolderPath() {
 
-        if (saveFileInProjectDirectory) {         //toDo закомментировал чтобы получилось запустить тесты. Раскомментировать перед деплоем
+        if (saveFileInProjectDirectory) {         //toDo для тестов замокать FilePathUtil
             if (subFolder != null && !subFolder.isEmpty()) {
                 return context.getRealPath("") + File.separator + subFolder;
             } else return context.getRealPath("");

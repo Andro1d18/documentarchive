@@ -84,4 +84,9 @@ public class UserController {
     public String admin(Model model) {
         return "admin";
     }
+
+    @GetMapping("/accessDenied")
+    public String accessDenied(Model model){
+        return "accessDenied";
+    }
 }
