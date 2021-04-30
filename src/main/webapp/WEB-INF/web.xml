@@ -8,7 +8,7 @@
 
     <filter>
         <filter-name>CharacterSetFilter</filter-name>
-        <filter-class>org.zhezlov.documentarchive.Utils.CharacterSetFilter</filter-class>
+        <filter-class>org.zhezlov.documentarchive.filter.CharacterSetFilter</filter-class>
     </filter>
 
     <filter-mapping>

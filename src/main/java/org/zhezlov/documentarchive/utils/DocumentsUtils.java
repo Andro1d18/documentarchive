@@ -1,7 +1,8 @@
-package org.zhezlov.documentarchive.to;
+package org.zhezlov.documentarchive.utils;
 
 
 import org.zhezlov.documentarchive.model.Document;
+import org.zhezlov.documentarchive.model.DocumentTo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

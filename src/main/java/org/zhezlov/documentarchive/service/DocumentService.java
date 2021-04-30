@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
-import org.zhezlov.documentarchive.UploadedFile;
-import org.zhezlov.documentarchive.Utils.FileManager;
+import org.zhezlov.documentarchive.validator.UploadedFile;
+import org.zhezlov.documentarchive.utils.FileManager;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.model.User;
 import org.zhezlov.documentarchive.repository.DocumentRepository;
 import org.zhezlov.documentarchive.repository.UserRepository;
-import org.zhezlov.documentarchive.to.DocumentTo;
-import org.zhezlov.documentarchive.to.DocumentsUtils;
+import org.zhezlov.documentarchive.model.DocumentTo;
+import org.zhezlov.documentarchive.utils.DocumentsUtils;
 import org.zhezlov.documentarchive.validator.FileValidator;
 
 import java.io.IOException;
@@ -55,10 +55,7 @@ public class DocumentService {
 
     public List<Document> getAll(Long userId) {             //for test
         User user = userRepository.getOne(userId);
-        if (user != null) {
-            return documentRepository.getAllwithAnyGrants(user.getId());
-        }
-        return Collections.emptyList();
+        return documentRepository.getAllwithAnyGrants(user.getId());
 
     }
 
@@ -142,11 +139,11 @@ public class DocumentService {
         }
     }
 
-    public void validateFile(UploadedFile uploadFile, BindingResult bindingResult){
+    public void validateFile(UploadedFile uploadFile, BindingResult bindingResult) {
         fileValidator.validate(uploadFile, bindingResult);
     }
 
-    public boolean userHasRight(Long docId){
+    public boolean userHasRight(Long docId) {
         return get(docId).getAuthorId().equals(getLoggedUser().getId());
     }
 

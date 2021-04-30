@@ -17,25 +17,22 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
     @NotEmpty
     private String name;
 
-    @Column(name = "description")
     @NotEmpty
     private String description;
 
     @Column(name = "author")
+    @NotNull
     private Long authorId;
 
-    @Column(name = "authorName")
+    @NotEmpty
     private String authorName;
 
     @Column(name = "created")
     @NotNull
     private LocalDateTime dateTimeCreated;
-
-
 
     public Document(Long id, String name, String description, LocalDateTime dateTimeCreated, Long authorId, String authorName) {
         this(name, description, dateTimeCreated, authorId, authorName);

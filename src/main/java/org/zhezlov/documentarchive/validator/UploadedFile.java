@@ -1,4 +1,4 @@
-package org.zhezlov.documentarchive;
+package org.zhezlov.documentarchive.validator;
 
 
 import org.springframework.web.multipart.MultipartFile;

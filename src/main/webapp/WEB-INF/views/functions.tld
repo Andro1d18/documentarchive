@@ -10,7 +10,7 @@
 
     <function>
         <name>formatDateTime</name>
-        <function-class>org.zhezlov.documentarchive.to.DocumentsUtils</function-class>
+        <function-class>org.zhezlov.documentarchive.utils.DocumentsUtils</function-class>
         <function-signature>java.lang.String toString(java.time.LocalDateTime)</function-signature>
     </function>
 </taglib>

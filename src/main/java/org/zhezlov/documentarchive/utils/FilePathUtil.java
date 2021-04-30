@@ -1,4 +1,4 @@
-package org.zhezlov.documentarchive.Utils;
+package org.zhezlov.documentarchive.utils;
 
 
 import org.springframework.beans.factory.annotation.Value;

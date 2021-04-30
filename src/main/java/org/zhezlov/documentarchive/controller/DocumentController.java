@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
-import org.zhezlov.documentarchive.UploadedFile;
+import org.zhezlov.documentarchive.validator.UploadedFile;
 import org.zhezlov.documentarchive.model.Document;
 import org.zhezlov.documentarchive.service.DocumentService;
 import org.zhezlov.documentarchive.service.UserService;
@@ -105,10 +105,8 @@ public class DocumentController {
         String id = request.getParameter("id");
         if (!documentService.userHasRight(Long.parseLong(id)))
             return "redirect:/welcome";
-        if (id != null) {
-            LOG.info("forward for update document with id ={}", id);
-            model.addAttribute("document", documentService.get(Long.parseLong(id)));
-        }
+        LOG.info("forward for update document with id ={}", id);
+        model.addAttribute("document", documentService.get(Long.parseLong(id)));
         return "documentUpdateForm";
     }
 
@@ -160,7 +158,7 @@ public class DocumentController {
     }
 
     @GetMapping("/cancel")
-    public String cancel(){
+    public String cancel() {
         return "redirect:/welcome";
     }
 }

@@ -1,4 +1,4 @@
-package org.zhezlov.documentarchive.to;
+package org.zhezlov.documentarchive.model;
 
 import java.time.LocalDateTime;
 

@@ -5,8 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.springframework.web.multipart.MultipartFile;
-import org.zhezlov.documentarchive.UploadedFile;
-import org.zhezlov.documentarchive.to.DocumentsUtils;
+import org.zhezlov.documentarchive.utils.DocumentsUtils;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
