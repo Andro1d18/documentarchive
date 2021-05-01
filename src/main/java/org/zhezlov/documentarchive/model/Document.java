@@ -1,7 +1,5 @@
 package org.zhezlov.documentarchive.model;
 
-import org.hibernate.annotations.Proxy;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -10,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "documents")
-@Proxy(lazy=false) //добавил т.к. возникала ошибка could not initialize proxy [org.zhezlov.documentarchive.model.Document#77] - no Session
+//@Proxy(lazy=false) //добавил т.к. возникала ошибка could not initialize proxy [org.zhezlov.documentarchive.model.Document#77] - no Session
 public class Document {
 
     @Id

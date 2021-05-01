@@ -11,8 +11,8 @@
     <!-- use WebJars so Javascript and CSS libs can be declared as Maven dependencies (Bootstrap, jQuery...) -->
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
-<!--    <mvc:resources mapping="/files/**" location="file:${path.file.warehouse}\\" /> &lt;!&ndash;for file warehouse in any directory&ndash;&gt;-->
-    <mvc:resources mapping="/files/**" location="/loadFile/" /> <!-- for file in project folder -->
+    <mvc:resources mapping="/files/**" location="file:${path.file.warehouse}\\" /> <!--for file warehouse in any directory-->
+<!--    <mvc:resources mapping="/files/**" location="/loadFile/" /> &lt;!&ndash; for file in project folder &ndash;&gt;-->
 
 
 

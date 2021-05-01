@@ -98,7 +98,7 @@ public class DocumentService {
     }
 
     public Document get(Long id) {
-        return documentRepository.getOne(id);
+        return documentRepository.findById(id).orElse(new Document());
     }
 
     public void update(Long id, String description) {
