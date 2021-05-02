@@ -24,13 +24,13 @@ VALUES ('Жезлов Андрей (1).pdf', 'Резюме', 1, 'andro1d1', '202
        ('error.log', 'Лог ошибки', 2, 'user','2002-11-01 14:30:00'),
        ('doc-Прилож1-ЗАЯВЛЕНИЕ+О+ДОСТАВКЕ+ПЕНСИИ.docx', 'Штатное рассписание', 2, 'user','2017-09-01 10:30:00');
 
-INSERT INTO documents_grants (id_document, id_user, granted)
-VALUES (1, 1, 1),
-       (2, 1, 1),
-       (3, 1, 1),
-       (4, 2, 1),
-       (5, 2, 1),
-       (5, 1, 1);
+INSERT INTO documents_grants (DOCUMENT_ID, USER_ID, granted)
+VALUES (1, 1, 12),
+       (2, 1, 13),
+       (3, 1, 14),
+       (4, 2, 15),
+       (5, 2, 16),
+       (5, 1, 17);
 
 
 

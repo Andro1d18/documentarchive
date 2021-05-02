@@ -4,11 +4,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
 @Table(name = "documents")
-//@Proxy(lazy=false) //добавил т.к. возникала ошибка could not initialize proxy [org.zhezlov.documentarchive.model.Document#77] - no Session
 public class Document {
 
     @Id
@@ -31,6 +32,9 @@ public class Document {
     @Column(name = "created")
     @NotNull
     private LocalDateTime dateTimeCreated;
+
+    @OneToMany(mappedBy = "document", fetch = FetchType.EAGER)
+    private List<DocumentGrants> documentGrants;
 
     public Document(Long id, String name, String description, LocalDateTime dateTimeCreated, Long authorId, String authorName) {
         this(name, description, dateTimeCreated, authorId, authorName);
@@ -101,4 +105,19 @@ public class Document {
         this.authorName = authorName;
     }
 
+
+    public List<DocumentGrants> getDocumentGrants() {
+        return documentGrants;
+    }
+
+    public void setDocumentGrants(List<DocumentGrants> documentGrants) {
+        this.documentGrants = documentGrants;
+    }
+
+    public void addDocumentGrants(DocumentGrants dg) {
+
+        if (documentGrants == null)
+            documentGrants = new ArrayList<>();
+        documentGrants.add(dg);
+    }
 }

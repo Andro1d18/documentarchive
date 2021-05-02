@@ -10,8 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.zhezlov.documentarchive.DocumentTestData;
 import org.zhezlov.documentarchive.model.Document;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ContextConfiguration({
@@ -24,11 +22,11 @@ public class DocumentServiceTest {
     @Autowired
     DocumentService documentService;
 
-    @Test
-    public void getAll() {
-        List<Document> actual = documentService.getAll(1L);
-        assertThat(actual).usingRecursiveComparison().isEqualTo(DocumentTestData.documentsUser1);
-    }
+//    @Test
+//    public void getAll() {
+//        List<Document> actual = documentService.getAllwithNativeQuery(1L);
+//        assertThat(actual).usingRecursiveComparison().isEqualTo(DocumentTestData.documentsUser1);
+//    }
 
     @Test
     public void get() {
@@ -44,10 +42,9 @@ public class DocumentServiceTest {
     }
 
 
-    @Test
-    public void shareDocument() {
-        documentService.shareDocument(1L, 2L);
-        List<Document> actual = documentService.getAll(2L);
-
-    }
+//    @Test
+//    public void shareDocument() {
+//        documentService.shareDocumentWithNativeQuary(1L, 2L);
+//        List<Document> actual = documentService.getAllwithNativeQuery(2L);
+//    }
 }

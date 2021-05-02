@@ -76,7 +76,7 @@ public class UserController {
     @GetMapping(value = {"/", "/welcome"})
     public String welcome(Model model) {
         LOG.debug("log in successful");
-        model.addAttribute("documents", documentService.getAll());
+        model.addAttribute("documents", documentService.findAllDocumentsWithAnyUserGrants());
         return "welcome";
     }
 

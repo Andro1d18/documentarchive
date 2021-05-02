@@ -37,10 +37,11 @@ CREATE TABLE documents
 
 CREATE TABLE documents_grants
 (
-    id_document INT NOT NULL,
-    id_user     INT NOT NULL,
+
+    document_id INT NOT NULL,
+    user_id     INT NOT NULL,
     granted     INT ,
-    FOREIGN KEY (id_document) REFERENCES documents (id) ON DELETE CASCADE,
-    FOREIGN KEY (id_user) REFERENCES users (id) ON DELETE CASCADE,
-    CONSTRAINT document_user UNIQUE (id_document, id_user)
+    FOREIGN KEY (document_id) REFERENCES documents (id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+    CONSTRAINT document_user UNIQUE (document_id, user_id)
 );

@@ -16,7 +16,6 @@ public class DocumentsUtils {
 
     public static final String[] EXTENSION_FOR_PREVIEW = {"pdf","odt", "odp", "ods"};
 
-
     public DocumentsUtils(){}
 
     public static List<DocumentTo> getTos(List<Document> documents, Long loggedUserId){
