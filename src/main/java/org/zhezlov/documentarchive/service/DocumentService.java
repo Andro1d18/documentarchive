@@ -52,7 +52,7 @@ public class DocumentService {
 //        return documentRepository.findAllDocumentsWithAnyUserGrants(userId);
 //    }
 
-    public List<DocumentTo> findAllDocumentsWithAnyUserGrants(){
+    public List<DocumentTo> findAllDocumentsWithAnyUserGrants() {
         User loggedUser = userRepository.findByUsername(getLoggedUser().getUsername());
         if (loggedUser != null) {
             return DocumentsUtils.getTos(documentRepository.findAllDocumentsWithAnyUserGrants(loggedUser.getId()), loggedUser.getId());
@@ -110,10 +110,8 @@ public class DocumentService {
 
     public void update(Long id, String description) {
         Document document = get(id);
-        if (document.getAuthorId().equals(getLoggedUser().getId())) {
             document.setDescription(description);
             documentRepository.save(document);
-        }
     }
 
     public void delete(Long id) throws IOException {
@@ -125,30 +123,41 @@ public class DocumentService {
         return userRepository.findByUsername(securityService.findLoggedUsername());
     }
 
-    public void shareDocumentForUser(Long id, Long userId) {
+    public void shareDocumentForUser(Long id, Long userId, boolean canView, boolean canEdit, boolean canDelete) {
 
-        Document document = documentRepository.getOne(id);
-        DocumentGrants dg = new DocumentGrants(document.getId(),userId, 1L, document );
-        documentGrantsRepository.save(dg);
-    }
+        Document document = get(id);
+        if (!document.getAuthorId().equals(userId)) {
+            if (canView) {
+                DocumentGrants dg = new DocumentGrants(document.getId(), userId, 15L, document);
+                documentGrantsRepository.save(dg);
+            } else documentGrantsRepository.deleteCanViewByUserIdAndDocumentId(userId, id);
 
-
-    public void shareDocumentForAllUsers(Long id) {
-        Document document = documentRepository.getOne(id);
-        for (User user :
-                userRepository.findAll()) {
-            DocumentGrants dg = new DocumentGrants(document.getId(), user.getId(), 1L, document );
-            documentGrantsRepository.save(dg);
+            if (canEdit) {
+                DocumentGrants dg = new DocumentGrants(document.getId(), userId, 10L, document);
+                documentGrantsRepository.save(dg);
+            } else documentGrantsRepository.deleteCanEditByUserIdAndDocumentId(userId, id);
+            if (canDelete) {
+                DocumentGrants dg = new DocumentGrants(document.getId(), userId, 5L, document);
+                documentGrantsRepository.save(dg);
+            } else documentGrantsRepository.deleteCanDeleteByUserIdAndDocumentId(userId, id);
         }
     }
 
 
+    public void shareDocumentForAllUsers(Long id, boolean canView, boolean canEdit, boolean canDelete) {
 
-    public void unsharingForAllUsers(Long id) {
-        Document document = documentRepository.getOne(id);
         for (User user :
                 userRepository.findAll()) {
-            if (!user.getId().equals(get(id).getAuthorId()))
+            shareDocumentForUser(id, user.getId(), canView, canEdit, canDelete);
+
+        }
+    }
+
+    public void unsharingForAllUsers(Long id) {
+        Document document = get(id);
+        for (User user :
+                userRepository.findAll()) {
+            if (!user.getId().equals(document.getAuthorId()))
                 documentGrantsRepository.deleteByUserIdAndDocumentId(user.getId(), id);
         }
     }
@@ -157,60 +166,30 @@ public class DocumentService {
         fileValidator.validate(uploadFile, bindingResult);
     }
 
+    @Deprecated
     public boolean userHasRight(Long docId) {
         return get(docId).getAuthorId().equals(getLoggedUser().getId());
     }
 
+    public boolean userHasRightForUpdate(Long docId) {
+        boolean flag = documentGrantsRepository.userHasRightForUpdate(getLoggedUser().getId(), docId);
+        LOG.info("flag is: {}", flag);
+        return flag;
+    }
+
     public boolean userHasRightForPreview(Long docId) {
-        return userHasRightForDownloadnig(docId);
+        return documentGrantsRepository.userHasRightForPreview(getLoggedUser().getId(), docId);
     }
 
     public boolean userHasRightForDownloadnig(Long docId) {
-        return documentGrantsRepository.findByUserIdAndDocumentId(getLoggedUser().getId(), docId) != null;
+        return documentGrantsRepository.userHasRightForDownloading(getLoggedUser().getId(), docId);
     }
 
-//    @Deprecated
-//    public boolean userHasRightForDownloadnigWithNativeQuery(Long docId) {
-//        return documentRepository.checkRightDownloading(docId, getLoggedUser().getId()) > 0;
-//    }
-//
-//    @Deprecated
-//    public List<DocumentTo> getAllwithNativeQuery() {             //return all document with everything grants
-//        User loggedUser = userRepository.findByUsername(getLoggedUser().getUsername());
-//        if (loggedUser != null) {
-//
-//            return DocumentsUtils.getTos(documentRepository.getAllwithAnyGrants(loggedUser.getId()), loggedUser.getId());
-//        }
-//        return Collections.emptyList();
-//
-//    }
-//
-//    @Deprecated
-//    public List<Document> getAllwithNativeQuery(Long userId) {             //for test
-//        User user = userRepository.getOne(userId);
-//        return documentRepository.getAllwithAnyGrants(user.getId());
-//    }
-//
-//    @Deprecated
-//    public void shareDocumentForAllUsersWithNativeQuery(Long id) {
-//        for (User user :
-//                userRepository.findAll()) {
-//            documentRepository.unsharingDocumentForOneUser(id, user.getId());
-//            documentRepository.sharingDocumentForOneUser(id, user.getId());
-//        }
-//    }
-//
-//    @Deprecated
-//    public void unsharingForAllUsersWithNativeQuery(Long id) {
-//        for (User user :
-//                userRepository.findAll()) {
-//            if (!user.getId().equals(get(id).getAuthorId()))
-//                documentRepository.unsharingDocumentForOneUser(id, user.getId());
-//        }
-//    }
-//    @Deprecated
-//    public void shareDocumentWithNativeQuary(Long id, Long userId) {
-//        documentRepository.unsharingDocumentForOneUser(id, userId);
-//        documentRepository.sharingDocumentForOneUser(id, userId);
-//    }
+    public boolean userHasRightForDelete(Long docId) {
+        return documentGrantsRepository.userHasRightForDelete(getLoggedUser().getId(), docId);
+    }
+
+    public boolean userHasRightForSharing(Long docId) {
+        return documentGrantsRepository.userHasRightForSharing(getLoggedUser().getId(), docId);
+    }
 }

@@ -57,13 +57,25 @@
                     </select>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-1"><c:out value="Can view"/></div>
+                <div class="col-md-1"><input type="checkbox" checked name="canView" value="true" id="idCanView"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"><c:out value="Can edit"/></div>
+                <div class="col-md-1"><input type="checkbox" checked name="canEdit" value="true" id="idCanEdit"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"><c:out value="Can delete"/></div>
+                <div class="col-md-1"><input type="checkbox" name="canDelete" value="true" id="idCanDelete"></div>
+            </div>
         </div>
         <button type="submit" class="btn btn-default btn-lg" ><c:out value="Enable sharing"/></button>
     </form>
     <form action="documents/unsharing" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="hidden" name="id" value="${document.id}">
-        <button type="submit" class="btn btn-default btn-lg"><c:out value="Disable sharing for all users"/></button>
+        <button type="submit" class="btn btn-default btn-lg "><c:out value="Disable sharing for all users"/></button>
         <br>
 <%--        <button onclick="window.history.back()" type="button">Cancel</button>--%>
     </form>

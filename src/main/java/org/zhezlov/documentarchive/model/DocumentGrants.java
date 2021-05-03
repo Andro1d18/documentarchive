@@ -8,11 +8,6 @@ import java.io.Serializable;
 @IdClass(DocumentGrantsId.class)
 @Table(name = "DOCUMENTS_GRANTS")
 public class DocumentGrants implements Serializable {
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-
 
     @Id
     @Column(name = "DOCUMENT_ID")
@@ -22,6 +17,7 @@ public class DocumentGrants implements Serializable {
     @Column(name = "USER_ID")
     private Long userId;
 
+    //Granted:
     //1 - is Author
     //5 - canDelete
     //10 - canUpdate

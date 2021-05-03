@@ -59,7 +59,7 @@ public class DocumentController {
     public String sharing(Model model, HttpServletRequest request) {
         String id = request.getParameter("id");
 
-        if (!documentService.userHasRight(Long.parseLong(id)))
+        if (!documentService.userHasRightForSharing(Long.parseLong(id)))
             return "redirect:/welcome";
 
         LOG.info("forward for update document with id ={}", id);
@@ -74,25 +74,52 @@ public class DocumentController {
     @PostMapping("/documents/sharing")
     public String sharing(@RequestParam("id") String id,
                           @RequestParam(value = "userId", required = false) String userId,
-                          @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers) {
+                          @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers,
+                          @RequestParam(value = "canView", defaultValue = "false") boolean canView,
+                          @RequestParam(value = "canEdit", defaultValue = "false") boolean canEdit,
+                          @RequestParam(value = "canDelete", defaultValue = "false") boolean canDelete)
+    {
 
-        if (!documentService.userHasRight(Long.parseLong(id)))
+        if (!documentService.userHasRightForSharing(Long.parseLong(id)))
             return "redirect:/welcome";
 
         if (forAllUsers) {
-            documentService.shareDocumentForAllUsers(Long.parseLong(id));
+            documentService.shareDocumentForAllUsers(Long.parseLong(id), canView, canEdit, canDelete);
             return "redirect:/welcome";
         }
-        if (userId != null && id != null) {
-            documentService.shareDocumentForUser(Long.parseLong(id), Long.parseLong(userId));
+        if (userId != null) {
+            documentService.shareDocumentForUser(Long.parseLong(id), Long.parseLong(userId), canView, canEdit, canDelete);
         }
         return "redirect:/welcome";
     }
+//
+//      запаска
+//    @PostMapping("/documents/sharing")
+//    public String sharing(@RequestParam("id") String id,
+//                          @RequestParam(value = "userId", required = false) String userId,
+//                          @RequestParam(value = "forAllUsers", defaultValue = "false") boolean forAllUsers,
+//                          @RequestParam(value = "canView", defaultValue = "false") boolean canView,
+//                          @RequestParam(value = "canEdit", defaultValue = "false") boolean canEdit,
+//                          @RequestParam(value = "canDelete", defaultValue = "false") boolean canDelete)
+//    {
+//
+//        if (!documentService.userHasRight(Long.parseLong(id)))
+//            return "redirect:/welcome";
+//
+//        if (forAllUsers) {
+//            documentService.shareDocumentForAllUsers(Long.parseLong(id));
+//            return "redirect:/welcome";
+//        }
+//        if (userId != null) {
+//            documentService.shareDocumentForUser(Long.parseLong(id), Long.parseLong(userId));
+//        }
+//        return "redirect:/welcome";
+//    }
 
 
     @PostMapping("/documents/unsharing")
     public String sharing(@RequestParam("id") String id) {
-        if (!documentService.userHasRight(Long.parseLong(id)))
+        if (!documentService.userHasRightForSharing(Long.parseLong(id)))
             return "redirect:/welcome";
 
         documentService.unsharingForAllUsers(Long.parseLong(id));
@@ -103,7 +130,7 @@ public class DocumentController {
     @GetMapping("/documents/update")
     public String update(Model model, HttpServletRequest request) {  //ОСТАНОВИЛСЯ ТУТ - доделай во все контроллеры проверку на имеет ли права пользователь на такие действия
         String id = request.getParameter("id");
-        if (!documentService.userHasRight(Long.parseLong(id)))
+        if (!documentService.userHasRightForUpdate(Long.parseLong(id)))
             return "redirect:/welcome";
         LOG.info("forward for update document with id ={}", id);
         model.addAttribute("document", documentService.get(Long.parseLong(id)));
@@ -114,7 +141,7 @@ public class DocumentController {
     public String update(Model model,     //при update можно только менять Описание. Если нужно загрузить другой файл, нужно удалять предыдущю запись
                          @RequestParam("id") String id,
                          @RequestParam("description") String description) {
-        if (!documentService.userHasRight(Long.parseLong(id)))
+        if (!documentService.userHasRightForUpdate(Long.parseLong(id)))
             return "redirect:/welcome";
         documentService.update(Long.parseLong(id), description);
         return "redirect:/welcome";
@@ -125,7 +152,7 @@ public class DocumentController {
     public String delete(HttpServletRequest request) {
         Long id = Long.parseLong(request.getParameter("id"));
 
-        if (!documentService.userHasRight(id))
+        if (!documentService.userHasRightForDelete(id))
             return "redirect:/welcome";
         LOG.debug("delete document with id = {}", id);
         try {

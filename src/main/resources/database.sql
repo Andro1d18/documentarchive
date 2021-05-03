@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS documents;
 DROP TABLE IF EXISTS users;
 
 
-
 -- Table: users
 CREATE TABLE users
 (
@@ -37,11 +36,10 @@ CREATE TABLE documents
 
 CREATE TABLE documents_grants
 (
-
     document_id INT NOT NULL,
     user_id     INT NOT NULL,
-    granted     INT ,
+    granted     INT NOT NULL,
     FOREIGN KEY (document_id) REFERENCES documents (id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-    CONSTRAINT document_user UNIQUE (document_id, user_id)
+    CONSTRAINT document_user UNIQUE (document_id, user_id, granted)
 );

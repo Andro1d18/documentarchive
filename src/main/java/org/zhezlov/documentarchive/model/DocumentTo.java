@@ -16,8 +16,10 @@ public class DocumentTo {
     private final boolean canUpdate;
     private final boolean canDelete;
 
+    private final boolean canDownload;
 
-    public DocumentTo(Long id, String name, String description, Long authorId, String authorName, LocalDateTime dateTimeCreated, boolean canPreview, boolean canSharing, boolean canUpdate, boolean canDelete) {
+
+    public DocumentTo(Long id, String name, String description, Long authorId, String authorName, LocalDateTime dateTimeCreated, boolean canPreview, boolean canSharing, boolean canUpdate, boolean canDelete, boolean canDownload) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -28,6 +30,7 @@ public class DocumentTo {
         this.canSharing = canSharing;
         this.canUpdate = canUpdate;
         this.canDelete = canDelete;
+        this.canDownload = canDownload;
 
     }
 
@@ -65,6 +68,11 @@ public class DocumentTo {
     public boolean isCanDelete() {
         return canDelete;
     }
+
+    public boolean isCanDownload() {
+        return canDownload;
+    }
+
     public String getAuthorName() {
         return authorName;
     }

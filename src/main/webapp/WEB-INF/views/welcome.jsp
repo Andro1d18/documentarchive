@@ -64,7 +64,16 @@
         </thead>
         <c:forEach items="${documents}" var="document">
             <tr>
-                <td><a href="documents/downloading?id=${document.id}">${document.name}</a></td>
+                <td>
+                    <c:choose>
+                        <c:when test="${document.isCanDownload()}">
+                            <a href="documents/downloading?id=${document.id}">${document.name}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <c:out value="${document.name}"/>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
                 <td><c:out value="${document.description}"/></td>
                 <td><c:out value="${document.authorName}"/></td>
                 <td><c:out value=" ${fn:formatDateTime(document.dateTimeCreated)}"/></td>
