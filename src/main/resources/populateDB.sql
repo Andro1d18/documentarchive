@@ -7,6 +7,8 @@ FROM documents_grants;
 DELETE
 FROM documents;
 DELETE
+FROM VERIFICATION;
+DELETE
 FROM users;
 
 ALTER TABLE DOCUMENTS
@@ -15,9 +17,9 @@ ALTER TABLE USERS
     ALTER COLUMN ID RESTART WITH 1;
 
 INSERT INTO users
-VALUES (1, 'andro1d1', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG'),
-       (2, 'user', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG'),
-       (3, 'kerrigan', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG');
+VALUES (1, 'andro1d1', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', 'bla@bla.com', TRUE),
+       (2, 'user', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', 'muh@moh.com', TRUE),
+       (3, 'kerrigan', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', 'ffa@ffo.com', TRUE);
 
 
 INSERT INTO user_roles

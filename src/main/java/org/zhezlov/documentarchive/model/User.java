@@ -31,7 +31,10 @@ public class User {
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     private Set<Role> roles;
 
+    private boolean enabled;
+
     public User() {
+        this.enabled = false;
     }
 
     public User(Long id, String username, String password, Set<Role> roles) {
@@ -39,6 +42,14 @@ public class User {
         this.username = username;
         this.password = password;
         this.roles = roles;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Long getId() {
