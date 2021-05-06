@@ -29,18 +29,36 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        boolean enabled = true;
+        boolean accountNonExpired = true;
+        boolean credentialsNonExpired = true;
+        boolean accountNonLocked = true;
+//        try {
+//            User user = userRepository.findByEmail(email);
+//            if (user == null) {
+//                throw new UsernameNotFoundException(
+//                        "No user found with username: " + email);
+//            }
         User user = userRepository.findByUsername(username);
 
-        if (user == null)
-            throw new UsernameNotFoundException("User not found");
 
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+            Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
-        if (user.getRoles() != null) {
-            for (Role role : user.getRoles()) {
-                grantedAuthorities.add(new SimpleGrantedAuthority(role.toString()));
+            if (user.getRoles() != null) {
+                for (Role role : user.getRoles()) {
+                    grantedAuthorities.add(new SimpleGrantedAuthority(role.toString()));
+                }
             }
-        }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+            return new org.springframework.security.core.userdetails.User(
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.isEnabled(),
+                    accountNonExpired,
+                    credentialsNonExpired,
+                    accountNonLocked,
+                    grantedAuthorities);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 }

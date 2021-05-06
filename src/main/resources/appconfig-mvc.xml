@@ -19,8 +19,30 @@
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>classpath:application</value>
+                <value>classpath:messages</value>
             </list>
+        </property>
+    </bean>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="En"/>
+
+    </bean>
+
+<!--    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"/>-->
+    <!-- SET default mail properties -->
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="25"/>
+        <property name="username" value="zhezloplanshet@gmail.com"/>
+        <property name="password" value="yfqrjy123"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
         </property>
     </bean>
 

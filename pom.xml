@@ -96,7 +96,18 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+        <!-- Mail configuration -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
         <!--Test-->
 <!--        <dependency>-->
 <!--            <groupId>org.junit.jupiter</groupId>-->

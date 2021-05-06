@@ -13,6 +13,9 @@
     <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/" access="hasAnyAuthority('USER', 'ADMIN')"/>
         <intercept-url pattern="/welcome" access="hasAnyAuthority('USER', 'ADMIN')"/>
+        <intercept-url pattern="/registrationConfirm" access="hasAnyAuthority('USER', 'ADMIN')"/>
+        <intercept-url pattern="/registrationSuccess" access="hasAnyAuthority('USER', 'ADMIN')"/>
+        <intercept-url pattern="/invalidUser" access="hasAnyAuthority('USER', 'ADMIN')"/>
         <intercept-url pattern="/admin" access="hasAuthority('ADMIN')"/>
         <intercept-url pattern="/documents/**" access="hasAnyAuthority('USER','ADMIN')"/>
         <intercept-url pattern="/files/**" access="hasAnyAuthority('USER','ADMIN')"/>

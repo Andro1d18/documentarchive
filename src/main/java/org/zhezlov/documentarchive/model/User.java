@@ -16,7 +16,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String username;
 
     private String password;
@@ -32,6 +32,8 @@ public class User {
     private Set<Role> roles;
 
     private boolean enabled;
+
+    private String email;
 
     public User() {
         this.enabled = false;
@@ -92,12 +94,22 @@ public class User {
         this.roles = roles;
     }
 
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id != null && id.equals(user.id) ;
+        return id != null && id.equals(user.id);
     }
 
     @Override
